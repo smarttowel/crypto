@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "caesarcipher.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,9 @@ public:
     
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void on_ciphiersComboBox_currentIndexChanged(int index);
 };
 
 #endif // MAINWINDOW_H
