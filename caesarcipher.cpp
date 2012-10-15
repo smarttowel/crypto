@@ -2,15 +2,17 @@
 #include "ui_caesarcipher.h"
 #include <QDebug>
 
-CaesarCipher::CaesarCipher(QWidget *parent) :
+CaesarCipher::CaesarCipher(QWidget *parent, QString text) :
     QWidget(parent),
     ui(new Ui::CaesarCipher)
 {
     ui->setupUi(this);
+    ui->textEdit->setText(text);
 }
 
 CaesarCipher::~CaesarCipher()
 {
+    emit text(ui->textEdit->toPlainText());
     delete ui;
 }
 

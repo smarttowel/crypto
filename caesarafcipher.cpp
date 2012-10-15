@@ -2,15 +2,17 @@
 #include "ui_caesarafcipher.h"
 #include "cryptohelper.h"
 
-CaesarAfCipher::CaesarAfCipher(QWidget *parent) :
+CaesarAfCipher::CaesarAfCipher(QWidget *parent, QString text) :
     QWidget(parent),
     ui(new Ui::CaesarAfCipher)
 {
     ui->setupUi(this);
+    ui->textEdit->setText(text);
 }
 
 CaesarAfCipher::~CaesarAfCipher()
 {
+    emit text(ui->textEdit->toPlainText());
     delete ui;
 }
 

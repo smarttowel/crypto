@@ -19,9 +19,11 @@ public:
     
 private:
     Ui::MainWindow *ui;
+    QString m_text;
 
 private slots:
     void on_ciphiersComboBox_currentIndexChanged(int index);
+    void textBuffer(QString text);
 };
 
 #endif // MAINWINDOW_H

@@ -26,11 +26,12 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         {
             if(ui->codeInputLayout->itemAt(0) != 0)
                 delete ui->codeInputLayout->takeAt(0)->widget();
-            CaesarCipher *widget = new CaesarCipher;
+            CaesarCipher *widget = new CaesarCipher(0, m_text);
             widget->setTokenLength(ui->spinBox->value());
             connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));
             connect(widget, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
             connect(ui->encryptPushButton, SIGNAL(clicked()), widget, SLOT(encryptText()));
+            connect(widget, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
             ui->codeInputLayout->addWidget(widget);
             break;
         }
@@ -38,13 +39,19 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         {
             if(ui->codeInputLayout->itemAt(0) != 0)
                 delete ui->codeInputLayout->takeAt(0)->widget();
-            CaesarAfCipher *widget = new CaesarAfCipher;
+            CaesarAfCipher *widget = new CaesarAfCipher(0, m_text);
             widget->setTokenLength(ui->spinBox->value());
             connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));
             connect(widget, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
             connect(ui->encryptPushButton, SIGNAL(clicked()), widget, SLOT(encryptText()));
+            connect(widget, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
             ui->codeInputLayout->addWidget(widget);
             break;
         }
     }
+}
+
+void MainWindow::textBuffer(QString text)
+{
+    m_text = text;
 }

@@ -13,7 +13,7 @@ class CaesarCipher : public QWidget
     Q_OBJECT
     
 public:
-    explicit CaesarCipher(QWidget *parent = 0);
+    explicit CaesarCipher(QWidget *parent = 0, QString text = "");
     ~CaesarCipher();
     
 private:
@@ -26,6 +26,7 @@ public slots:
 
 signals:
     void encryptedText(QString str);
+    void text(QString text);
 };
 
 #endif // CAESARCIPHER_H
