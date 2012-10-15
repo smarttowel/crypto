@@ -13,8 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    caesarcipher.cpp \
+    cryptohelper.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    caesarcipher.h \
+    cryptohelper.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    caesarcipher.ui
