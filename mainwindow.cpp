@@ -27,6 +27,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
             if(ui->codeInputLayout->itemAt(0) != 0)
                 delete ui->codeInputLayout->takeAt(0)->widget();
             CaesarCipher *widget = new CaesarCipher;
+            widget->setTokenLength(ui->spinBox->value());
             connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));
             connect(widget, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
             connect(ui->encryptPushButton, SIGNAL(clicked()), widget, SLOT(encryptText()));
