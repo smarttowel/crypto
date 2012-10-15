@@ -15,11 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     caesarcipher.cpp \
-    cryptohelper.cpp
+    cryptohelper.cpp \
+    caesarafcipher.cpp
 
 HEADERS  += mainwindow.h \
     caesarcipher.h \
-    cryptohelper.h
+    cryptohelper.h \
+    caesarafcipher.h
 
 FORMS    += mainwindow.ui \
-    caesarcipher.ui
+    caesarcipher.ui \
+    caesarafcipher.ui

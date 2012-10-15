@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "caesarcipher.h"
+#include "caesarafcipher.h"
 
 namespace Ui {
 class MainWindow;
