@@ -28,3 +28,17 @@ QString CryptoHelper::post(QString text, int tokenLength)
         text.insert(i, " ");
     return text;
 }
+
+
+AbstractCipher::AbstractCipher(QObject *parent)
+{
+}
+
+void AbstractCipher::encryptText()
+{
+}
+
+void AbstractCipher::setTokenLength(int length)
+{
+    m_tokenLength = length;
+}

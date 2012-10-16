@@ -2,12 +2,13 @@
 #define CAESARAFCIPHER_H
 
 #include <QWidget>
+#include "cryptohelper.h"
 
 namespace Ui {
 class CaesarAfCipher;
 }
 
-class CaesarAfCipher : public QWidget
+class CaesarAfCipher : public AbstractCipher
 {
     Q_OBJECT
     
@@ -17,16 +18,10 @@ public:
     
 private:
     Ui::CaesarAfCipher *ui;
-    int m_tokenLength;
     int gcd(int a, int b);
 
 public slots:
     void encryptText();
-    void setTokenLength(int length);
-
-signals:
-    void encryptedText(QString str);
-    void text(QString text);
 };
 
 #endif // CAESARAFCIPHER_H

@@ -8,7 +8,7 @@ namespace Ui {
 class CaesarCipher;
 }
 
-class CaesarCipher : public QWidget
+class CaesarCipher : public AbstractCipher
 {
     Q_OBJECT
     
@@ -18,15 +18,9 @@ public:
     
 private:
     Ui::CaesarCipher *ui;
-    int m_tokenLength;
 
 public slots:
     void encryptText();
-    void setTokenLength(int length);
-
-signals:
-    void encryptedText(QString str);
-    void text(QString text);
 };
 
 #endif // CAESARCIPHER_H

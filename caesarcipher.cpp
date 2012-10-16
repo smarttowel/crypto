@@ -3,7 +3,7 @@
 #include <QDebug>
 
 CaesarCipher::CaesarCipher(QWidget *parent, QString text) :
-    QWidget(parent),
+    AbstractCipher(parent),
     ui(new Ui::CaesarCipher)
 {
     ui->setupUi(this);
@@ -28,9 +28,4 @@ void CaesarCipher::encryptText()
     }
     text = CryptoHelper::post(text, m_tokenLength);
     emit encryptedText(text);
-}
-
-void CaesarCipher::setTokenLength(int length)
-{
-    m_tokenLength = length;
 }

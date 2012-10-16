@@ -1,9 +1,8 @@
 #include "caesarafcipher.h"
 #include "ui_caesarafcipher.h"
-#include "cryptohelper.h"
 
 CaesarAfCipher::CaesarAfCipher(QWidget *parent, QString text) :
-    QWidget(parent),
+    AbstractCipher(parent),
     ui(new Ui::CaesarAfCipher)
 {
     ui->setupUi(this);
@@ -34,17 +33,11 @@ void CaesarAfCipher::encryptText()
     {
         text = CryptoHelper::pre(text);
         for(int i = 0; i < text.length(); i++)
-        {
             text[i] = CryptoHelper::alphabet()[ui->firstKeyspinBox->value() * i +
                     ui->secondKeyspinBox->value() % CryptoHelper::alphabet().length()];
-        }
     }
     else
         text = QString::fromLocal8Bit("a и m не взаимно простые!");
+    text = CryptoHelper::post(text, m_tokenLength);
     emit encryptedText(text);
-}
-
-void CaesarAfCipher::setTokenLength(int length)
-{
-    m_tokenLength = length;
 }

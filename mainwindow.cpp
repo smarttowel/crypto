@@ -20,35 +20,28 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
 {
+    AbstractCipher *widget;
+    if(ui->codeInputLayout->itemAt(0) != 0)
+        delete ui->codeInputLayout->takeAt(0)->widget();
     switch(index)
     {
         case 0:
         {
-            if(ui->codeInputLayout->itemAt(0) != 0)
-                delete ui->codeInputLayout->takeAt(0)->widget();
-            CaesarCipher *widget = new CaesarCipher(0, m_text);
-            widget->setTokenLength(ui->spinBox->value());
-            connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));
-            connect(widget, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
-            connect(ui->encryptPushButton, SIGNAL(clicked()), widget, SLOT(encryptText()));
-            connect(widget, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
-            ui->codeInputLayout->addWidget(widget);
+            widget = new CaesarCipher(0, m_text);
             break;
         }
         case 1:
         {
-            if(ui->codeInputLayout->itemAt(0) != 0)
-                delete ui->codeInputLayout->takeAt(0)->widget();
-            CaesarAfCipher *widget = new CaesarAfCipher(0, m_text);
-            widget->setTokenLength(ui->spinBox->value());
-            connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));
-            connect(widget, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
-            connect(ui->encryptPushButton, SIGNAL(clicked()), widget, SLOT(encryptText()));
-            connect(widget, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
-            ui->codeInputLayout->addWidget(widget);
+            widget = new CaesarAfCipher(0, m_text);
             break;
         }
     }
+    widget->setTokenLength(ui->spinBox->value());
+    connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));
+    connect(widget, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
+    connect(ui->encryptPushButton, SIGNAL(clicked()), widget, SLOT(encryptText()));
+    connect(widget, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
+    ui->codeInputLayout->addWidget(widget);
 }
 
 void MainWindow::textBuffer(QString text)
