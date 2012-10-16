@@ -7,6 +7,8 @@ CaesarAfCipher::CaesarAfCipher(QWidget *parent, QString text) :
 {
     ui->setupUi(this);
     ui->textEdit->setText(text);
+    ui->firstKeyspinBox->setMaximum(CryptoHelper::alphabet().length());
+    ui->secondKeyspinBox->setMaximum(CryptoHelper::alphabet().length());
 }
 
 CaesarAfCipher::~CaesarAfCipher()
