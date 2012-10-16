@@ -8,7 +8,7 @@ CryptoHelper::CryptoHelper(QObject *parent) :
 
 QString CryptoHelper::alphabet()
 {
-    return QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщьыъэюя");
+    return QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя");
 }
 
 QString CryptoHelper::pre(QString text)
@@ -29,6 +29,16 @@ QString CryptoHelper::post(QString text, int tokenLength)
     return text;
 }
 
+bool CryptoHelper::isUniq(QString text)
+{
+    QString key;
+    for(int i = 0; i < text.length(); i++)
+        if(key.contains(text[i]))
+            return false;
+        else
+            key += text[i];
+    return true;
+}
 
 AbstractCipher::AbstractCipher(QObject *parent)
 {

@@ -13,6 +13,7 @@ public:
     static QString alphabet();
     static QString pre(QString text);
     static QString post(QString text, int tokenLength);
+    static bool isUniq(QString text);
 
 signals:
     
