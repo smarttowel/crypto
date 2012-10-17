@@ -16,13 +16,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     caesarcipher.cpp \
     cryptohelper.cpp \
-    caesarafcipher.cpp
+    caesarafcipher.cpp \
+    caesarkwcipher.cpp
 
 HEADERS  += mainwindow.h \
     caesarcipher.h \
     cryptohelper.h \
-    caesarafcipher.h
+    caesarafcipher.h \
+    caesarkwcipher.h
 
 FORMS    += mainwindow.ui \
     caesarcipher.ui \
-    caesarafcipher.ui
+    caesarafcipher.ui \
+    caesarkwcipher.ui

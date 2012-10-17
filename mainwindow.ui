@@ -64,6 +64,11 @@
                <string>Шифр Цезаря(афин.)</string>
               </property>
              </item>
+             <item>
+              <property name="text">
+               <string>Шифр Цезаря(кл. сл.)</string>
+              </property>
+             </item>
             </widget>
            </item>
            <item>
