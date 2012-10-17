@@ -14,6 +14,8 @@ public:
     static QString pre(QString text);
     static QString post(QString text, int tokenLength);
     static bool isUniq(QString text);
+    static QString leftRotate(QString text, int count);
+    static QString rightRotate(QString text, int count);
 
 signals:
     

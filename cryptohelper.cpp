@@ -40,6 +40,32 @@ bool CryptoHelper::isUniq(QString text)
     return true;
 }
 
+QString CryptoHelper::leftRotate(QString text, int count)
+{
+    QChar c;
+    for(int j = 0; j < count; j++)
+    {
+        c = text[0];
+        for(int i = 0; i < text.length() - 1; i++)
+            text[i] = text[i + 1];
+        text[text.length() - 1] = c;
+    }
+    return text;
+}
+
+QString CryptoHelper::rightRotate(QString text, int count)
+{
+    QChar c;
+    for(int j = 0; j < count; j++)
+    {
+        c = text[text.length() - 1];
+        for(int i = text.length() - 1; i != 0 ; i--)
+            text[i] = text[i - 1];
+        text[0] = c;
+    }
+    return text;
+}
+
 AbstractCipher::AbstractCipher(QObject *parent)
 {
 }
