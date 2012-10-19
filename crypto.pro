@@ -17,15 +17,18 @@ SOURCES += main.cpp\
     caesarcipher.cpp \
     cryptohelper.cpp \
     caesarafcipher.cpp \
-    caesarkwcipher.cpp
+    caesarkwcipher.cpp \
+    playfaircipher.cpp
 
 HEADERS  += mainwindow.h \
     caesarcipher.h \
     cryptohelper.h \
     caesarafcipher.h \
-    caesarkwcipher.h
+    caesarkwcipher.h \
+    playfaircipher.h
 
 FORMS    += mainwindow.ui \
     caesarcipher.ui \
     caesarafcipher.ui \
-    caesarkwcipher.ui
+    caesarkwcipher.ui \
+    playfaircipher.ui
