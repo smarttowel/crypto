@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QString>
+#include <qmath.h>
 
 class CryptoHelper : public QObject
 {
@@ -16,6 +17,7 @@ public:
     static bool isUniq(QString text);
     static QString leftRotate(QString text, int count);
     static QString rightRotate(QString text, int count);
+    static QPair<int, int> tableSize(int alphabetLength);
 
 signals:
     

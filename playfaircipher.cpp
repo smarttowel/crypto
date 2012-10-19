@@ -15,16 +15,6 @@ PlayfairCipher::~PlayfairCipher()
     delete ui;
 }
 
-QPair<int, int> PlayfairCipher::tableSize(int alphabetLength)
-{
-    int a = qSqrt(alphabetLength);
-    while(alphabetLength % a != 0)
-    {
-        a--;
-    }
-    return QPair<int, int>(a, alphabetLength / a);
-}
-
 void PlayfairCipher::encryptText()
 {
     if(CryptoHelper::isUniq(ui->keyLineEdit->text()) && ui->keyLineEdit->text().length() <= CryptoHelper::alphabet().length())
@@ -40,8 +30,8 @@ void PlayfairCipher::encryptText()
         QString outText;
         int first;
         int second;
-        int row = tableSize(alphabet.length()).first;
-        int col = tableSize(alphabet.length()).second;
+        int row = CryptoHelper::tableSize(alphabet.length()).first;
+        int col = CryptoHelper::tableSize(alphabet.length()).second;
         for(int i = 0; i < ui->keyLineEdit->text().length(); i++)
         {
             alphabet.remove(ui->keyLineEdit->text()[i]);

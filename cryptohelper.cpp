@@ -66,6 +66,16 @@ QString CryptoHelper::rightRotate(QString text, int count)
     return text;
 }
 
+QPair<int, int> CryptoHelper::tableSize(int alphabetLength)
+{
+    int a = qSqrt(alphabetLength);
+    while(alphabetLength % a != 0)
+    {
+        a--;
+    }
+    return QPair<int, int>(a, alphabetLength / a);
+}
+
 AbstractCipher::AbstractCipher(QObject *parent)
 {
 }

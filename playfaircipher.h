@@ -2,7 +2,6 @@
 #define PLAYFAIRCIPHER_H
 
 #include <QWidget>
-#include <qmath.h>
 #include "cryptohelper.h"
 
 namespace Ui {
@@ -19,7 +18,6 @@ public:
     
 private:
     Ui::PlayfairCipher *ui;
-    QPair<int, int> tableSize(int alphabetLength);
 
 
 public slots:
