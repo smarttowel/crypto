@@ -25,16 +25,13 @@ void TrithemiusCipher::encryptText()
         QString alphabet = CryptoHelper::alphabet();
         int row = CryptoHelper::tableSize(alphabet.length()).first;
         int col = CryptoHelper::tableSize(alphabet.length()).second;
+        ui->label_2->setText(QString::fromLocal8Bit("Размер таблицы: %1x%2").arg(row).arg(col));
         for(int i = 0; i < ui->lineEdit->text().length(); i++)
         {
             alphabet.remove(ui->lineEdit->text()[i]);
         }
         table = ui->lineEdit->text();
         table += alphabet;
-        qDebug() << table.left(8);
-        qDebug() << table.mid(8, 8);
-        qDebug() << table.mid(16, 8);
-        qDebug() << table.right(8);
         for(int i = 0; i < inText.length(); i++)
         {
             outText += table[(table.indexOf(inText[i]) + col) % CryptoHelper::alphabet().length()];

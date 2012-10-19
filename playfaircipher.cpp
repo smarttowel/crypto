@@ -32,6 +32,7 @@ void PlayfairCipher::encryptText()
         int second;
         int row = CryptoHelper::tableSize(alphabet.length()).first;
         int col = CryptoHelper::tableSize(alphabet.length()).second;
+        ui->label_2->setText(QString::fromLocal8Bit("Размер таблицы: %1x%2").arg(row).arg(col));
         for(int i = 0; i < ui->keyLineEdit->text().length(); i++)
         {
             alphabet.remove(ui->keyLineEdit->text()[i]);
