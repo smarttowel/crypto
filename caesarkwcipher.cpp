@@ -22,6 +22,7 @@ void CaesarKWCipher::encryptText()
     {
         QString alphabet = CryptoHelper::alphabet();
         QString newAlphabet;
+        QString inText = CryptoHelper::pre(ui->textEdit->toPlainText());
         QString outText;
         for(int i = 0; i < ui->secondKeyLineEdit->text().length(); i++)
         {
@@ -30,8 +31,9 @@ void CaesarKWCipher::encryptText()
         newAlphabet = ui->secondKeyLineEdit->text();
         newAlphabet += alphabet;
         newAlphabet = CryptoHelper::rightRotate(newAlphabet, ui->firstKeySpinBox->value() - 1);
-        for(int i = 0; i < ui->textEdit->toPlainText().length(); i++)
-            outText += newAlphabet[CryptoHelper::alphabet().indexOf(ui->textEdit->toPlainText()[i])];
+        for(int i = 0; i < inText.length(); i++)
+            outText += newAlphabet[CryptoHelper::alphabet().indexOf(inText[i])];
+        outText = CryptoHelper::post(outText, m_tokenLength);
         emit encryptedText(outText);
     }
     else
