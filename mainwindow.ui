@@ -74,6 +74,11 @@
                <string>Шифр Плейфера</string>
               </property>
              </item>
+             <item>
+              <property name="text">
+               <string>Шифр Трисемуса</string>
+              </property>
+             </item>
             </widget>
            </item>
            <item>
