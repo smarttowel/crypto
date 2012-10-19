@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     caesarafcipher.cpp \
     caesarkwcipher.cpp \
     playfaircipher.cpp \
-    trithemiuscipher.cpp
+    trithemiuscipher.cpp \
+    vigenerecipher.cpp
 
 HEADERS  += mainwindow.h \
     caesarcipher.h \
@@ -27,11 +28,13 @@ HEADERS  += mainwindow.h \
     caesarafcipher.h \
     caesarkwcipher.h \
     playfaircipher.h \
-    trithemiuscipher.h
+    trithemiuscipher.h \
+    vigenerecipher.h
 
 FORMS    += mainwindow.ui \
     caesarcipher.ui \
     caesarafcipher.ui \
     caesarkwcipher.ui \
     playfaircipher.ui \
-    trithemiuscipher.ui
+    trithemiuscipher.ui \
+    vigenerecipher.ui

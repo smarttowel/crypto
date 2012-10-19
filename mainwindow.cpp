@@ -50,6 +50,11 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
             widget = new TrithemiusCipher(0, m_text);
             break;
         }
+        case 5:
+        {
+            widget = new VigenereCipher(0, m_text);
+            break;
+        }
     }
     widget->setTokenLength(ui->spinBox->value());
     connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));

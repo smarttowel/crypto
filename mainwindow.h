@@ -7,6 +7,7 @@
 #include "caesarkwcipher.h"
 #include "playfaircipher.h"
 #include "trithemiuscipher.h"
+#include "vigenerecipher.h"
 
 namespace Ui {
 class MainWindow;

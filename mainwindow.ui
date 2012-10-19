@@ -79,6 +79,11 @@
                <string>Шифр Трисемуса</string>
               </property>
              </item>
+             <item>
+              <property name="text">
+               <string>Шифр Виженера</string>
+              </property>
+             </item>
             </widget>
            </item>
            <item>
