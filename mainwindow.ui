@@ -84,6 +84,11 @@
                <string>Шифр Виженера</string>
               </property>
              </item>
+             <item>
+              <property name="text">
+               <string>Шифрование маг. кв.</string>
+              </property>
+             </item>
             </widget>
            </item>
            <item>

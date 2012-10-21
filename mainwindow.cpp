@@ -55,6 +55,11 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
             widget = new VigenereCipher(0, m_text);
             break;
         }
+        case 6:
+        {
+            widget = new MagicSquareCipher(0, m_text);
+            break;
+        }
     }
     widget->setTokenLength(ui->spinBox->value());
     connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));

@@ -8,6 +8,7 @@
 #include "playfaircipher.h"
 #include "trithemiuscipher.h"
 #include "vigenerecipher.h"
+#include "magicsquarecipher.h"
 
 namespace Ui {
 class MainWindow;
