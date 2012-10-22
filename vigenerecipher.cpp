@@ -19,7 +19,7 @@ void VigenereCipher::encryptText()
     QString inText = CryptoHelper::pre(ui->textEdit->toPlainText());
     QString key = ui->lineEdit->text();
     QString outText;
-    QString alphabet = CryptoHelper::alphabet();
+    QString alphabet = CryptoHelper::alphabet;
     for(int i = 0; i < inText.length(); i++)
     {
         outText += alphabet[alphabet.indexOf(inText[i]) + alphabet.indexOf(key[i % key.length()]) % alphabet.length()];

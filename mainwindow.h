@@ -11,6 +11,7 @@
 #include "vigenerecipher.h"
 #include "magicsquarecipher.h"
 #include "wheatstonecipher.h"
+#include "settingsdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,11 +28,13 @@ public:
 private:
     Ui::MainWindow *ui;
     QString m_text;
+    SettingsDialog m_settings;
 
 private slots:
     void on_ciphiersComboBox_currentIndexChanged(int index);
     void textBuffer(QString text);
     void saveToFile();
+    void reloadCipher();
 };
 
 #endif // MAINWINDOW_H

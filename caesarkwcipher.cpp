@@ -8,7 +8,7 @@ CaesarKWCipher::CaesarKWCipher(QWidget *parent, QString text) :
 {
     ui->setupUi(this);
     ui->textEdit->setText(text);
-    ui->firstKeySpinBox->setMaximum(CryptoHelper::alphabet().length());
+    ui->firstKeySpinBox->setMaximum(CryptoHelper::alphabet.length());
 }
 
 CaesarKWCipher::~CaesarKWCipher()
@@ -18,9 +18,9 @@ CaesarKWCipher::~CaesarKWCipher()
 
 void CaesarKWCipher::encryptText()
 {
-    if(CryptoHelper::isUniq(ui->secondKeyLineEdit->text()) || ui->secondKeyLineEdit->text().length() > CryptoHelper::alphabet().length())
+    if(CryptoHelper::isUniq(ui->secondKeyLineEdit->text()) || ui->secondKeyLineEdit->text().length() > CryptoHelper::alphabet.length())
     {
-        QString alphabet = CryptoHelper::alphabet();
+        QString alphabet = CryptoHelper::alphabet;
         QString newAlphabet;
         QString inText = CryptoHelper::pre(ui->textEdit->toPlainText());
         QString outText;
@@ -32,7 +32,7 @@ void CaesarKWCipher::encryptText()
         newAlphabet += alphabet;
         newAlphabet = CryptoHelper::rightRotate(newAlphabet, ui->firstKeySpinBox->value() - 1);
         for(int i = 0; i < inText.length(); i++)
-            outText += newAlphabet[CryptoHelper::alphabet().indexOf(inText[i])];
+            outText += newAlphabet[CryptoHelper::alphabet.indexOf(inText[i])];
         outText = CryptoHelper::post(outText, m_tokenLength);
         emit encryptedText(outText);
     }

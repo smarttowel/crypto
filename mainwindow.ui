@@ -195,8 +195,9 @@
    </widget>
    <widget class="QMenu" name="settingsMenu">
     <property name="title">
-     <string>Настройки...</string>
+     <string>Настройки</string>
     </property>
+    <addaction name="action_settings"/>
    </widget>
    <widget class="QMenu" name="aboutMenu">
     <property name="title">
@@ -235,12 +236,17 @@
   </action>
   <action name="action_aboutQt">
    <property name="text">
-    <string>О Qt</string>
+    <string>О Qt...</string>
    </property>
   </action>
   <action name="action_aboutProgram">
    <property name="text">
-    <string>О программе</string>
+    <string>О программе...</string>
+   </property>
+  </action>
+  <action name="action_settings">
+   <property name="text">
+    <string>Настройки...</string>
    </property>
   </action>
  </widget>

@@ -14,6 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_saveToFile, SIGNAL(triggered()), this, SLOT(saveToFile()));
     connect(ui->action_aboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(ui->action_Exit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(ui->action_settings, SIGNAL(triggered()), &m_settings, SLOT(show()));
+    connect(&m_settings, SIGNAL(alphabetChanged()), this, SLOT(reloadCipher()));
+    CryptoHelper::alphabet = QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя");
 }
 
 MainWindow::~MainWindow()
@@ -92,4 +95,9 @@ void MainWindow::saveToFile()
     QTextStream stream(&file);
     stream << ui->codeOutTextEdit->toPlainText();
     file.close();
+}
+
+void MainWindow::reloadCipher()
+{
+    on_ciphiersComboBox_currentIndexChanged(ui->ciphiersComboBox->currentIndex());
 }

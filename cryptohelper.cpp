@@ -6,20 +6,27 @@ CryptoHelper::CryptoHelper(QObject *parent) :
 {
 }
 
-QString CryptoHelper::alphabet()
-{
-    return QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя");
-}
-
 QString CryptoHelper::pre(QString text)
 {
     text = text.toLower();
     for(int i = 0; i < text.length(); i++)
     {
-        if(!alphabet().contains(text[i]))
-            text.replace(i, 1, ' ');
+        if(!alphabet.contains(text[i]))
+            text.remove(text[i]);
     }
-    return text.replace(" ", "");
+    return text;
+}
+
+QString CryptoHelper::preW(QString text)
+{
+    QString a = alphabet + extAlphabet;
+    text = text.toLower();
+    for(int i = 0; i < text.length(); i++)
+    {
+        if(!a.contains(text[i]))
+            text.remove(text[i]);
+    }
+    return text;
 }
 
 QString CryptoHelper::post(QString text, int tokenLength)
@@ -75,6 +82,9 @@ QPair<int, int> CryptoHelper::tableSize(int alphabetLength)
     }
     return QPair<int, int>(a, alphabetLength / a);
 }
+
+QString CryptoHelper::alphabet = "";
+QString CryptoHelper::extAlphabet = "";
 
 AbstractCipher::AbstractCipher(QObject *parent)
 {

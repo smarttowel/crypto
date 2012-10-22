@@ -17,14 +17,14 @@ PlayfairCipher::~PlayfairCipher()
 
 void PlayfairCipher::encryptText()
 {
-    if(CryptoHelper::isUniq(ui->keyLineEdit->text()) && ui->keyLineEdit->text().length() <= CryptoHelper::alphabet().length())
+    if(CryptoHelper::isUniq(ui->keyLineEdit->text()) && ui->keyLineEdit->text().length() <= CryptoHelper::alphabet.length())
     {
         if(ui->textEdit->toPlainText().length() % 2 != 0)
         {
             emit encryptedText(QString::fromLocal8Bit("Количество букв в тексте должно быть четным!"));
             return;
         }
-        QString alphabet = CryptoHelper::alphabet();
+        QString alphabet = CryptoHelper::alphabet;
         QString table;
         QString inText = CryptoHelper::pre(ui->textEdit->toPlainText());
         QString outText;
@@ -51,8 +51,8 @@ void PlayfairCipher::encryptText()
             }
             else if(qAbs(first - second) % col == 0)
             {
-                outText += table[(first + col) % CryptoHelper::alphabet().length()];
-                outText += table[(second + col) % CryptoHelper::alphabet().length()];
+                outText += table[(first + col) % CryptoHelper::alphabet.length()];
+                outText += table[(second + col) % CryptoHelper::alphabet.length()];
             }
             else
             {

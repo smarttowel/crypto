@@ -9,15 +9,19 @@
 class CryptoHelper : public QObject
 {
     Q_OBJECT
+
 public:
     explicit CryptoHelper(QObject *parent = 0);
-    static QString alphabet();
     static QString pre(QString text);
+    static QString preW(QString text);
     static QString post(QString text, int tokenLength);
     static bool isUniq(QString text);
     static QString leftRotate(QString text, int count);
     static QString rightRotate(QString text, int count);
     static QPair<int, int> tableSize(int alphabetLength);
+    static void setAlphabet(QString alphabet);
+    static QString alphabet;
+    static QString extAlphabet;
 
 signals:
     

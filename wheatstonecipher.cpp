@@ -9,7 +9,7 @@ WheatstoneCipher::WheatstoneCipher(QWidget *parent, QString text) :
     ui->setupUi(this);
     qsrand(QTime::currentTime().msec());
     ui->textEdit->setText(text);
-    QPair<int, int> size = CryptoHelper::tableSize(CryptoHelper::alphabet().length());
+    QPair<int, int> size = CryptoHelper::tableSize(CryptoHelper::alphabet.length());
     ui->firstKeyTableWidget->setRowCount(size.first);
     ui->firstKeyTableWidget->setColumnCount(size.second);
     ui->secondKeyTableWidget->setRowCount(size.first);
@@ -24,7 +24,7 @@ WheatstoneCipher::~WheatstoneCipher()
 
 void WheatstoneCipher::fillTables()
 {
-    QString alphabet = CryptoHelper::alphabet();
+    QString alphabet = CryptoHelper::alphabet + CryptoHelper::extAlphabet;
     int index;
     for(int i = 0; i < ui->firstKeyTableWidget->rowCount(); i++)
         for(int j = 0; j < ui->firstKeyTableWidget->columnCount(); j++)
@@ -33,7 +33,7 @@ void WheatstoneCipher::fillTables()
             ui->firstKeyTableWidget->setItem(i,j, new QTableWidgetItem(QString(alphabet[index]), Qt::DisplayRole));
             alphabet.remove(index, 1);
         }
-    alphabet = CryptoHelper::alphabet();
+    alphabet = CryptoHelper::alphabet + CryptoHelper::extAlphabet;
     for(int i = 0; i < ui->secondKeyTableWidget->rowCount(); i++)
         for(int j = 0; j < ui->secondKeyTableWidget->columnCount(); j++)
         {
@@ -49,7 +49,7 @@ bool WheatstoneCipher::checkTables()
         for(int j = 0; j < ui->firstKeyTableWidget->columnCount(); j++)
             if(ui->firstKeyTableWidget->item(i,j) == 0 || ui->firstKeyTableWidget->item(i,j) == 0)
                 return false;
-    QString alphabet = CryptoHelper::alphabet();
+    QString alphabet = CryptoHelper::alphabet + CryptoHelper::extAlphabet;
     for(int i = 0; i < ui->firstKeyTableWidget->rowCount(); i++)
         for(int j = 0; j < ui->firstKeyTableWidget->columnCount(); j++)
         {
@@ -58,7 +58,7 @@ bool WheatstoneCipher::checkTables()
             else
                 return false;
         }
-    alphabet = CryptoHelper::alphabet();
+    alphabet = CryptoHelper::alphabet + CryptoHelper::extAlphabet;
     for(int i = 0; i < ui->secondKeyTableWidget->rowCount(); i++)
         for(int j = 0; j < ui->secondKeyTableWidget->columnCount(); j++)
         {
@@ -74,7 +74,7 @@ void WheatstoneCipher::encryptText()
 {
     if(checkTables())
     {
-        QString inText = CryptoHelper::pre(ui->textEdit->toPlainText());
+        QString inText = CryptoHelper::preW(ui->textEdit->toPlainText());
         if(inText.length() % 2 != 0)
         {
             emit encryptedText(QString::fromLocal8Bit("Количество букв в тексте должно быть четным!"));
