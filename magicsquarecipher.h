@@ -26,6 +26,10 @@ private:
     Ui::MagicSquareCipher *ui;
     void generateEvenSquare();
     void generateOddSquare();
+    bool checkOnMagic();
+
+public slots:
+    void encryptText();
 };
 
 #endif // MAGICSQUARECIPHER_H

@@ -63,10 +63,10 @@
        <item>
         <widget class="QSpinBox" name="spinBox">
          <property name="minimum">
-          <number>1</number>
+          <number>3</number>
          </property>
          <property name="value">
-          <number>4</number>
+          <number>3</number>
          </property>
         </widget>
        </item>
