@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
 #include "caesarcipher.h"
 #include "caesarafcipher.h"
 #include "caesarkwcipher.h"
@@ -30,6 +31,7 @@ private:
 private slots:
     void on_ciphiersComboBox_currentIndexChanged(int index);
     void textBuffer(QString text);
+    void saveToFile();
 };
 
 #endif // MAINWINDOW_H

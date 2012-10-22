@@ -11,6 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->spinBox->setValue(4);
     on_ciphiersComboBox_currentIndexChanged(ui->ciphiersComboBox->currentIndex());
+    connect(ui->action_saveToFile, SIGNAL(triggered()), this, SLOT(saveToFile()));
+    connect(ui->action_aboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(ui->action_Exit, SIGNAL(triggered()), qApp, SLOT(quit()));
 }
 
 MainWindow::~MainWindow()
@@ -77,4 +80,16 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
 void MainWindow::textBuffer(QString text)
 {
     m_text = text;
+}
+
+void MainWindow::saveToFile()
+{
+    QString filename = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("Сохранить в..."), "",
+                                                    QString("Text files (*.txt)"));
+    QFile file;
+    file.setFileName(filename);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream stream(&file);
+    stream << ui->codeOutTextEdit->toPlainText();
+    file.close();
 }

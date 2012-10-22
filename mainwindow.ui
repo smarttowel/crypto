@@ -185,6 +185,29 @@
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="generalMenu">
+    <property name="title">
+     <string>Общие</string>
+    </property>
+    <addaction name="action_saveToFile"/>
+    <addaction name="separator"/>
+    <addaction name="action_Exit"/>
+   </widget>
+   <widget class="QMenu" name="settingsMenu">
+    <property name="title">
+     <string>Настройки...</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="aboutMenu">
+    <property name="title">
+     <string>О программе</string>
+    </property>
+    <addaction name="action_aboutQt"/>
+    <addaction name="action_aboutProgram"/>
+   </widget>
+   <addaction name="generalMenu"/>
+   <addaction name="settingsMenu"/>
+   <addaction name="aboutMenu"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -195,6 +218,31 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_saveToFile">
+   <property name="text">
+    <string>Сохранить результат в файл...</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+  <action name="action_Exit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+  <action name="action_aboutQt">
+   <property name="text">
+    <string>О Qt</string>
+   </property>
+  </action>
+  <action name="action_aboutProgram">
+   <property name="text">
+    <string>О программе</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
