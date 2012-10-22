@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WheatstoneCipher</class>
+ <widget class="QWidget" name="WheatstoneCipher">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>278</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="10,1">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QTableWidget" name="firstKeyTableWidget">
+         <property name="rowCount">
+          <number>6</number>
+         </property>
+         <property name="columnCount">
+          <number>6</number>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>35</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>35</number>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>35</number>
+         </attribute>
+         <attribute name="verticalHeaderMinimumSectionSize">
+          <number>35</number>
+         </attribute>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="secondKeyTableWidget">
+         <property name="rowCount">
+          <number>6</number>
+         </property>
+         <property name="columnCount">
+          <number>6</number>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>35</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>35</number>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>35</number>
+         </attribute>
+         <attribute name="verticalHeaderMinimumSectionSize">
+          <number>35</number>
+         </attribute>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QTextEdit" name="textEdit"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

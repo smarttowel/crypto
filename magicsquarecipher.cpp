@@ -146,7 +146,6 @@ void MagicSquareCipher::encryptText()
                     if(ui->tableWidget->item(i,j)->data(Qt::DisplayRole).toInt() <= inText.size())
                     {
                         outText += inText[ui->tableWidget->item(i,j)->data(Qt::DisplayRole).toInt() - 1];
-                        qDebug() << outText;
                         itr++;
                     }
                 }

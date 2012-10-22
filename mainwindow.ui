@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="5,2">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,1">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,1">
       <item>
        <layout class="QHBoxLayout" name="codeInputLayout"/>
       </item>
@@ -87,6 +87,11 @@
              <item>
               <property name="text">
                <string>Шифрование маг. кв.</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Шифр Уитстона</string>
               </property>
              </item>
             </widget>

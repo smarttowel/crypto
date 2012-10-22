@@ -9,6 +9,7 @@
 #include "trithemiuscipher.h"
 #include "vigenerecipher.h"
 #include "magicsquarecipher.h"
+#include "wheatstonecipher.h"
 
 namespace Ui {
 class MainWindow;

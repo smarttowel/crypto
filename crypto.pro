@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     playfaircipher.cpp \
     trithemiuscipher.cpp \
     vigenerecipher.cpp \
-    magicsquarecipher.cpp
+    magicsquarecipher.cpp \
+    wheatstonecipher.cpp
 
 HEADERS  += mainwindow.h \
     caesarcipher.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     playfaircipher.h \
     trithemiuscipher.h \
     vigenerecipher.h \
-    magicsquarecipher.h
+    magicsquarecipher.h \
+    wheatstonecipher.h
 
 FORMS    += mainwindow.ui \
     caesarcipher.ui \
@@ -40,4 +42,5 @@ FORMS    += mainwindow.ui \
     playfaircipher.ui \
     trithemiuscipher.ui \
     vigenerecipher.ui \
-    magicsquarecipher.ui
+    magicsquarecipher.ui \
+    wheatstonecipher.ui
