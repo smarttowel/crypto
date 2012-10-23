@@ -29,9 +29,9 @@ QString CryptoHelper::preW(QString text)
     return text;
 }
 
-QString CryptoHelper::post(QString text, int tokenLength)
+QString CryptoHelper::post(QString text)
 {
-    for(int i = tokenLength; i < text.length(); i += tokenLength + 1)
+    for(int i = CryptoHelper::tokenLength; i < text.length(); i += CryptoHelper::tokenLength + 1)
         text.insert(i, " ");
     return text;
 }
@@ -85,6 +85,7 @@ QPair<int, int> CryptoHelper::tableSize(int alphabetLength)
 
 QString CryptoHelper::alphabet = "";
 QString CryptoHelper::extAlphabet = "";
+int CryptoHelper::tokenLength = 4;
 
 AbstractCipher::AbstractCipher(QObject *parent)
 {
@@ -92,9 +93,4 @@ AbstractCipher::AbstractCipher(QObject *parent)
 
 void AbstractCipher::encryptText()
 {
-}
-
-void AbstractCipher::setTokenLength(int length)
-{
-    m_tokenLength = length;
 }

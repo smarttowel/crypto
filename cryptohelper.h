@@ -14,7 +14,7 @@ public:
     explicit CryptoHelper(QObject *parent = 0);
     static QString pre(QString text);
     static QString preW(QString text);
-    static QString post(QString text, int tokenLength);
+    static QString post(QString text);
     static bool isUniq(QString text);
     static QString leftRotate(QString text, int count);
     static QString rightRotate(QString text, int count);
@@ -22,6 +22,7 @@ public:
     static void setAlphabet(QString alphabet);
     static QString alphabet;
     static QString extAlphabet;
+    static int tokenLength;
 
 signals:
     
@@ -35,12 +36,8 @@ class AbstractCipher : public QWidget
 public:
     explicit AbstractCipher(QObject *parent = 0);
 
-protected:
-    int m_tokenLength;
-
 public slots:
     virtual void encryptText();
-    void setTokenLength(int length);
 
 signals:
     void encryptedText(QString str);

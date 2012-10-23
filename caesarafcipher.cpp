@@ -40,6 +40,6 @@ void CaesarAfCipher::encryptText()
     }
     else
         text = QString::fromLocal8Bit("a и m не взаимно простые!");
-    text = CryptoHelper::post(text, m_tokenLength);
+    text = CryptoHelper::post(text);
     emit encryptedText(text);
 }

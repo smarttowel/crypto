@@ -26,6 +26,6 @@ void CaesarCipher::encryptText()
         index = (CryptoHelper::alphabet.indexOf(text[i]) + ui->spinBox->value()) % CryptoHelper::alphabet.length();
         text[i] = CryptoHelper::alphabet[index];
     }
-    text = CryptoHelper::post(text, m_tokenLength);
+    text = CryptoHelper::post(text);
     emit encryptedText(text);
 }

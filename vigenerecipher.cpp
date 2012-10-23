@@ -24,6 +24,6 @@ void VigenereCipher::encryptText()
     {
         outText += alphabet[alphabet.indexOf(inText[i]) + alphabet.indexOf(key[i % key.length()]) % alphabet.length()];
     }
-    outText = CryptoHelper::post(outText, m_tokenLength);
+    outText = CryptoHelper::post(outText);
     emit encryptedText(outText);
 }

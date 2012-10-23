@@ -9,7 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->spinBox->setValue(4);
+    move(QApplication::desktop()->geometry().width() / 2 - this->geometry().width() / 2,
+         QApplication::desktop()->geometry().height() / 2 - this->geometry().height() / 2);
     on_ciphiersComboBox_currentIndexChanged(ui->ciphiersComboBox->currentIndex());
     connect(ui->action_saveToFile, SIGNAL(triggered()), this, SLOT(saveToFile()));
     connect(ui->action_aboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
@@ -17,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_settings, SIGNAL(triggered()), &m_settings, SLOT(show()));
     connect(&m_settings, SIGNAL(alphabetChanged()), this, SLOT(reloadCipher()));
     CryptoHelper::alphabet = QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя");
+    CryptoHelper::tokenLength = 4;
 }
 
 MainWindow::~MainWindow()
@@ -72,8 +74,6 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
             break;
         }
     }
-    widget->setTokenLength(ui->spinBox->value());
-    connect(ui->spinBox, SIGNAL(valueChanged(int)), widget, SLOT(setTokenLength(int)));
     connect(widget, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
     connect(ui->encryptPushButton, SIGNAL(clicked()), widget, SLOT(encryptText()));
     connect(widget, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));

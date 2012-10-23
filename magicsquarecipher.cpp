@@ -152,7 +152,7 @@ void MagicSquareCipher::encryptText()
             inText.remove(0, itr);
             itr = 0;
         }
-        outText = CryptoHelper::post(outText, m_tokenLength);
+        outText = CryptoHelper::post(outText);
         emit encryptedText(outText);
     }
     else

@@ -99,7 +99,7 @@ void WheatstoneCipher::encryptText()
                 outText += ui->firstKeyTableWidget->item(second->row(), first->column())->data(Qt::DisplayRole).toString();
             }
         }
-        outText = CryptoHelper::post(outText, m_tokenLength);
+        outText = CryptoHelper::post(outText);
         emit encryptedText(outText);
     }
     else

@@ -60,7 +60,7 @@ void PlayfairCipher::encryptText()
                 outText += table[second / col * col + first % col];
             }
         }
-        outText = CryptoHelper::post(outText, m_tokenLength);
+        outText = CryptoHelper::post(outText);
         emit encryptedText(outText);
     }
     else

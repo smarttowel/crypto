@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <cryptohelper.h>
+#include <QDesktopWidget>
 
 namespace Ui {
 class SettingsDialog;

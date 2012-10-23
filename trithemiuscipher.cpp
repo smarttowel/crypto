@@ -36,7 +36,7 @@ void TrithemiusCipher::encryptText()
         {
             outText += table[(table.indexOf(inText[i]) + col) % CryptoHelper::alphabet.length()];
         }
-        outText = CryptoHelper::post(outText, m_tokenLength);
+        outText = CryptoHelper::post(outText);
         emit encryptedText(outText);
     }
     else

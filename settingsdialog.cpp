@@ -7,6 +7,8 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowModality(Qt::ApplicationModal);
+    move(QApplication::desktop()->geometry().width() / 2 - this->geometry().width() / 2,
+         QApplication::desktop()->geometry().height() / 2 - this->geometry().height() / 2);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -18,6 +20,7 @@ void SettingsDialog::on_cancelPushButton_clicked()
 {
     ui->alphabetLineEdit->setText(CryptoHelper::alphabet);
     ui->extAlphabetLineEdit->setText(CryptoHelper::extAlphabet);
+    ui->tokenLengthSpinBox->setValue(CryptoHelper::tokenLength);
     ui->msgLabel->setText("");
     this->hide();
 }
@@ -29,10 +32,11 @@ void SettingsDialog::on_applyPushButton_clicked()
     {
         CryptoHelper::alphabet = ui->alphabetLineEdit->text();
         CryptoHelper::extAlphabet = ui->extAlphabetLineEdit->text();
+        CryptoHelper::tokenLength = ui->tokenLengthSpinBox->value();
         ui->msgLabel->setText("");
         emit alphabetChanged();
         this->hide();
     }
     else
-        ui->msgLabel->setText(QString::fromLocal8Bit("<font color = \"red\">Символы в алфавите не долнжы повторяться!</font>"));
+        ui->msgLabel->setText(QString::fromLocal8Bit("<font color = \"red\">Символы в алфавите не должны повторяться!</font>"));
 }
