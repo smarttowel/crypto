@@ -45,6 +45,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         case 1:
         {
             m_cipher = new CaesarAfCipher(0, m_text);
+            m_visualization = new CaesarCipherView(0, int(ui->trainingModeCheckBox->checkState()));
             break;
         }
         case 2:
