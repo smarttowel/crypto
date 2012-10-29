@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     magicsquarecipher.cpp \
     wheatstonecipher.cpp \
     settingsdialog.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    abstractcipherview.cpp
 
 HEADERS  += mainwindow.h \
     caesarcipher.h \
@@ -37,7 +38,8 @@ HEADERS  += mainwindow.h \
     magicsquarecipher.h \
     wheatstonecipher.h \
     settingsdialog.h \
-    aboutdialog.h
+    aboutdialog.h \
+    abstractcipherview.h
 
 FORMS    += mainwindow.ui \
     caesarcipher.ui \
@@ -49,4 +51,5 @@ FORMS    += mainwindow.ui \
     magicsquarecipher.ui \
     wheatstonecipher.ui \
     settingsdialog.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    abstractcipherview.ui

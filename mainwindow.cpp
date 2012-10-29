@@ -9,16 +9,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    m_visualization = 0;
     move(QApplication::desktop()->geometry().width() / 2 - this->geometry().width() / 2,
          QApplication::desktop()->geometry().height() / 2 - this->geometry().height() / 2);
+    CryptoHelper::alphabet = QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя");
+    CryptoHelper::tokenLength = 4;
     on_ciphiersComboBox_currentIndexChanged(ui->ciphiersComboBox->currentIndex());
     connect(ui->action_saveToFile, SIGNAL(triggered()), this, SLOT(saveToFile()));
     connect(ui->action_aboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(ui->action_Exit, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui->action_settings, SIGNAL(triggered()), &m_settings, SLOT(show()));
     connect(&m_settings, SIGNAL(alphabetChanged()), this, SLOT(reloadCipher()));
-    CryptoHelper::alphabet = QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя");
-    CryptoHelper::tokenLength = 4;
+    connect(ui->action_aboutProgram, SIGNAL(triggered()), &m_about, SLOT(show()));
 }
 
 MainWindow::~MainWindow()
@@ -28,56 +30,61 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
 {
-    AbstractCipher *widget;
     if(ui->codeInputLayout->itemAt(0) != 0)
         delete ui->codeInputLayout->takeAt(0)->widget();
+    if(m_visualization != 0)
+        delete m_visualization;
     switch(index)
     {
         case 0:
         {
-            widget = new CaesarCipher(0, m_text);
+            m_cipher = new CaesarCipher(0, m_text);
+            m_visualization = new CaesarCipherView(0, int(ui->trainingModeCheckBox->checkState()));
             break;
         }
         case 1:
         {
-            widget = new CaesarAfCipher(0, m_text);
+            m_cipher = new CaesarAfCipher(0, m_text);
             break;
         }
         case 2:
         {
-            widget = new CaesarKWCipher(0, m_text);
+            m_cipher = new CaesarKWCipher(0, m_text);
             break;
         }
         case 3:
         {
-            widget = new PlayfairCipher(0, m_text);
+            m_cipher = new PlayfairCipher(0, m_text);
             break;
         }
         case 4:
         {
-            widget = new TrithemiusCipher(0, m_text);
+            m_cipher = new TrithemiusCipher(0, m_text);
             break;
         }
         case 5:
         {
-            widget = new VigenereCipher(0, m_text);
+            m_cipher = new VigenereCipher(0, m_text);
             break;
         }
         case 6:
         {
-            widget = new MagicSquareCipher(0, m_text);
+            m_cipher = new MagicSquareCipher(0, m_text);
             break;
         }
         case 7:
         {
-            widget = new WheatstoneCipher(0, m_text);
+            m_cipher = new WheatstoneCipher(0, m_text);
             break;
         }
     }
-    connect(widget, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
-    connect(ui->encryptPushButton, SIGNAL(clicked()), widget, SLOT(encryptText()));
-    connect(widget, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
-    ui->codeInputLayout->addWidget(widget);
+    connect(m_cipher, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
+    connect(ui->encryptPushButton, SIGNAL(clicked()), m_cipher, SLOT(encryptText()));
+    connect(m_cipher, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
+    //
+    connect(m_cipher, SIGNAL(results(QString,QString)), m_visualization, SLOT(setResults(QString,QString)));
+    connect(ui->trainingModeCheckBox, SIGNAL(stateChanged(int)), m_visualization, SLOT(setIsShow(int)));
+    ui->codeInputLayout->addWidget(m_cipher);
 }
 
 void MainWindow::textBuffer(QString text)

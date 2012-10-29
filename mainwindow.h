@@ -12,6 +12,8 @@
 #include "magicsquarecipher.h"
 #include "wheatstonecipher.h"
 #include "settingsdialog.h"
+#include "aboutdialog.h"
+#include "abstractcipherview.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +31,9 @@ private:
     Ui::MainWindow *ui;
     QString m_text;
     SettingsDialog m_settings;
+    AboutDialog m_about;
+    AbstractCipherView *m_visualization;
+    AbstractCipher *m_cipher;
 
 private slots:
     void on_ciphiersComboBox_currentIndexChanged(int index);
