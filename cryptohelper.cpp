@@ -12,7 +12,10 @@ QString CryptoHelper::pre(QString text)
     for(int i = 0; i < text.length(); i++)
     {
         if(!alphabet.contains(text[i]))
+        {
             text.remove(text[i]);
+            i--;
+        }
     }
     return text;
 }
@@ -87,7 +90,8 @@ QString CryptoHelper::alphabet = "";
 QString CryptoHelper::extAlphabet = "";
 int CryptoHelper::tokenLength = 4;
 
-AbstractCipher::AbstractCipher(QObject *parent)
+AbstractCipher::AbstractCipher(QWidget *parent) :
+    QWidget(parent)
 {
 }
 
