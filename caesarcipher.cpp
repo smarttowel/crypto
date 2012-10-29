@@ -23,6 +23,15 @@ void CaesarCipherView::paintEvent(QPaintEvent *)
         pen.setWidth(3);
         painter.setPen(pen);
         highlightChar(m_currentChar);
+        //draw rectangles
+        m_cellRect.setX(10 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_text[m_currentChar]) + 1));
+        m_cellRect.setWidth(CELL_SIZE);
+        m_cellRect.setHeight(CELL_SIZE);
+        painter.drawRect(m_cellRect);
+        m_cellRect.setX(10 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1));
+        m_cellRect.setWidth(CELL_SIZE);
+        m_cellRect.setHeight(CELL_SIZE);
+        painter.drawRect(m_cellRect);
         //draw lines
         painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_text[m_currentChar]) + 1), 10 + CELL_SIZE,
                          10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_text[m_currentChar]) + 1), 10 + CELL_SIZE + 50);
@@ -32,9 +41,9 @@ void CaesarCipherView::paintEvent(QPaintEvent *)
                          10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE);
         //draw arrow
         painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) + 5, 10 + CELL_SIZE + 5);
+                         10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) + 8, 10 + CELL_SIZE + 8);
         painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) - 5, 10 + CELL_SIZE + 5);
+                         10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) - 8, 10 + CELL_SIZE + 8);
 
     }
 }
@@ -42,9 +51,18 @@ void CaesarCipherView::paintEvent(QPaintEvent *)
 void CaesarCipherView::onNextButtonClick()
 {
     m_currentChar++;
-    if(m_currentChar == m_text.length() - 1)
-        setNextButtonEnabled(false);
     setBackButtonEnabled(true);
+    if(m_currentChar == m_text.length() - 1)
+    {
+        setNextButtonEnabled(false);
+        if(m_timer.isActive())
+        {
+            on_autoButton_clicked();
+            m_currentChar = 0;
+            setBackButtonEnabled(false);
+            setNextButtonEnabled(true);
+        }
+    }
     update();
 }
 
@@ -66,9 +84,10 @@ CaesarCipherView::CaesarCipherView(QWidget *parent, int a) :
     AbstractCipherView(parent)
 {
     m_isShow = a;
+    m_currentChar = 0;
     setFixedSize(m_cellRect.x() * 6 + m_cellRect.width() * CryptoHelper::alphabet.length(),
                  200 + m_cellRect.y() * 2 + m_cellRect.height());
-    m_currentChar = 0;
+    setWindowTitle(QString::fromLocal8Bit("Визуализация шифра Цезаря"));
 }
 
 CaesarCipherView::~CaesarCipherView()

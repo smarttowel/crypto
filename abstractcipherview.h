@@ -2,6 +2,8 @@
 #define ABSTRACTCIPHERVIEW_H
 
 #include <QWidget>
+#include <QTimer>
+#include "cryptohelper.h"
 
 namespace Ui {
 class AbstractCipherView;
@@ -18,9 +20,10 @@ public:
 protected:
     QString m_text;
     QString m_encryptedText;
-    int m_isShow;
     QRect m_cellRect;
+    int m_isShow;
     bool m_draw;
+    QTimer m_timer;
     static const int CELL_SIZE = 30;
     void setNextButtonEnabled(bool a);
     void setBackButtonEnabled(bool a);
@@ -30,6 +33,7 @@ protected:
 protected slots:
     virtual void onNextButtonClick();
     virtual void onBackButtonClick();
+    void on_autoButton_clicked();
 
 public slots:
     void setResults(QString inText, QString outText);

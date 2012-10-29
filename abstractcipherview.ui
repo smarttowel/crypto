@@ -67,6 +67,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="nextButton">
+       <property name="text">
+        <string>Далее</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -80,9 +87,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="nextButton">
+      <widget class="QPushButton" name="autoButton">
        <property name="text">
-        <string>Далее</string>
+        <string>Авто</string>
        </property>
       </widget>
      </item>

@@ -6,14 +6,16 @@ AbstractCipherView::AbstractCipherView(QWidget *parent) :
     ui(new Ui::AbstractCipherView)
 {
     ui->setupUi(this);
-    connect(ui->nextButton, SIGNAL(clicked()), this, SLOT(onNextButtonClick()));
-    connect(ui->backButton, SIGNAL(clicked()), this, SLOT(onBackButtonClick()));
     m_cellRect.setX(10);
     m_cellRect.setY(10);
     m_cellRect.setWidth(CELL_SIZE);
     m_cellRect.setHeight(CELL_SIZE);
     ui->backButton->setEnabled(false);
     m_draw = false;
+    m_timer.setInterval(1000);
+    connect(ui->nextButton, SIGNAL(clicked()), this, SLOT(onNextButtonClick()));
+    connect(ui->backButton, SIGNAL(clicked()), this, SLOT(onBackButtonClick()));
+    connect(&m_timer, SIGNAL(timeout()), this, SLOT(onNextButtonClick()));
 }
 
 AbstractCipherView::~AbstractCipherView()
@@ -85,4 +87,17 @@ void AbstractCipherView::onNextButtonClick()
 
 void AbstractCipherView::onBackButtonClick()
 {
+}
+void AbstractCipherView::on_autoButton_clicked()
+{
+    if(m_timer.isActive())
+    {
+        m_timer.stop();
+        ui->autoButton->setText(QString::fromLocal8Bit("Авто"));
+    }
+    else
+    {
+        m_timer.start();
+        ui->autoButton->setText(QString::fromLocal8Bit("Стоп"));
+    }
 }
