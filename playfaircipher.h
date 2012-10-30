@@ -19,7 +19,6 @@ public:
 private:
     Ui::PlayfairCipher *ui;
 
-
 public slots:
     void encryptText();
 };

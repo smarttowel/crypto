@@ -123,7 +123,7 @@ void CaesarCipher::encryptText()
         index = (CryptoHelper::alphabet.indexOf(text[i]) + ui->spinBox->value()) % CryptoHelper::alphabet.length();
         text[i] = CryptoHelper::alphabet[index];
     }
+    emit results(CryptoHelper::pre(ui->textEdit->toPlainText()), text);
     text = CryptoHelper::post(text);
     emit encryptedText(text);
-    emit results(CryptoHelper::pre(ui->textEdit->toPlainText()), CryptoHelper::pre(text));
 }

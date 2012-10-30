@@ -57,26 +57,31 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         case 3:
         {
             m_cipher = new PlayfairCipher(0, m_text);
+            m_visualization = new AbstractCipherView;
             break;
         }
         case 4:
         {
             m_cipher = new TrithemiusCipher(0, m_text);
+            m_visualization = new AbstractCipherView;
             break;
         }
         case 5:
         {
             m_cipher = new VigenereCipher(0, m_text);
+            m_visualization = new AbstractCipherView;
             break;
         }
         case 6:
         {
             m_cipher = new MagicSquareCipher(0, m_text);
+            m_visualization = new AbstractCipherView;
             break;
         }
         case 7:
         {
             m_cipher = new WheatstoneCipher(0, m_text);
+            m_visualization = new AbstractCipherView;
             break;
         }
     }

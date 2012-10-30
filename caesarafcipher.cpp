@@ -37,10 +37,10 @@ void CaesarAfCipher::encryptText()
         for(int i = 0; i < text.length(); i++)
             text[i] = CryptoHelper::alphabet[ui->firstKeyspinBox->value() * i +
                     ui->secondKeyspinBox->value() % CryptoHelper::alphabet.length()];
-        emit results(CryptoHelper::pre(ui->textEdit->toPlainText()), CryptoHelper::pre(CryptoHelper::post(text)));
+        emit results(CryptoHelper::pre(ui->textEdit->toPlainText()), text);
+        text = CryptoHelper::post(text);
+        emit encryptedText(text);
     }
     else
-        text = QString::fromLocal8Bit("a и m не взаимно простые!");
-    text = CryptoHelper::post(text);
-    emit encryptedText(text);
+        emit encryptedText(QString::fromLocal8Bit("a и m не взаимно простые!"));
 }

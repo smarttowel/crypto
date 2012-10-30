@@ -135,9 +135,9 @@ void CaesarKWCipher::encryptText()
         newAlphabet = CryptoHelper::rightRotate(newAlphabet, ui->firstKeySpinBox->value() - 1);
         for(int i = 0; i < inText.length(); i++)
             outText += newAlphabet[CryptoHelper::alphabet.indexOf(inText[i])];
+        emit results(newAlphabet, inText, outText);
         outText = CryptoHelper::post(outText);
         emit encryptedText(outText);
-        emit results(newAlphabet, inText, CryptoHelper::pre(outText));
     }
     else
         emit encryptedText(QString::fromLocal8Bit("В ключевом слове не должны повторяться буквы!"));
