@@ -9,9 +9,21 @@ void CaesarKWCipherView::paintEvent(QPaintEvent *)
     painter.setRenderHint(QPainter::Antialiasing);
     pen.setColor(Qt::black);
     pen.setWidth(3);
+    //first alphabet
+    for(int i = 0; i < CryptoHelper::alphabet.length(); i++)
+    {
+        m_cellRect.setX(10 + CELL_SIZE * (i + 1));
+        m_cellRect.setY(10);
+        m_cellRect.setWidth(CELL_SIZE);
+        m_cellRect.setHeight(CELL_SIZE);
+        painter.drawRect(m_cellRect);
+        painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2, QChar(CryptoHelper::alphabet[i]));
+    }
+    //second alphabet
     for(int i = 0; i < m_alphabet.length(); i++)
     {
         m_cellRect.setX(10 + CELL_SIZE * (i + 1));
+        m_cellRect.setY(10 + CELL_SIZE * 3);
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
@@ -24,26 +36,24 @@ void CaesarKWCipherView::paintEvent(QPaintEvent *)
         painter.setPen(pen);
         highlightChar(m_currentChar);
         //draw rectangles
-        m_cellRect.setX(10 + CELL_SIZE * (m_alphabet.indexOf(m_text[m_currentChar]) + 1));
+        m_cellRect.setX(10 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_text[m_currentChar]) + 1));
+        m_cellRect.setY(10);
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
         m_cellRect.setX(10 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1));
+        m_cellRect.setY(10 + CELL_SIZE * 3);
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
         //draw lines
-        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_text[m_currentChar]) + 1), 10 + CELL_SIZE,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_text[m_currentChar]) + 1), 10 + CELL_SIZE + 50);
-        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_text[m_currentChar]) + 1), 10 + CELL_SIZE + 50,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE + 50);
-        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE + 50,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE);
+        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_text[m_currentChar]) + 1), 10 + CELL_SIZE,
+                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3);
         //draw arrow
-        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) + 8, 10 + CELL_SIZE + 8);
-        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) - 8, 10 + CELL_SIZE + 8);
+        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3,
+                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) + 8, 10 + CELL_SIZE * 3 - 8);
+        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3,
+                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) - 8, 10 + CELL_SIZE * 3 - 8);
 
     }
 }
