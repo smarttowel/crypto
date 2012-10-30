@@ -40,11 +40,11 @@ void AbstractCipherView::resetChars()
 void AbstractCipherView::highlightChar(int index)
 {
     QString text = m_text;
-    text.insert(index + 1, "</font>");
-    text.insert(index, "<font color = \"red\">");
+    text.insert(index + m_token, "</font>");
+    text.insert(index, "<font color = \"green\">");
     ui->inTextEdit->setText(text);
     text = m_encryptedText;
-    text.insert(index + 1, "</font>");
+    text.insert(index + m_token, "</font>");
     text.insert(index, "<font color = \"red\">");
     ui->outTextEdit->setText(text);
 }
@@ -53,7 +53,7 @@ void AbstractCipherView::setResults(QString inText, QString outText)
 {
     m_text = inText;
     m_encryptedText = outText;
-    if(m_text.length() == 0 || m_text.length() == 1)
+    if(m_text.length() == 0 || m_text.length() == m_token)
     {
         setNextButtonEnabled(false);
         setBackButtonEnabled(false);

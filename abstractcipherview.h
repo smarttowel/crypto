@@ -23,6 +23,7 @@ protected:
     QString m_alphabet;
     QRect m_cellRect;
     int m_isShow;
+    int m_token;
     bool m_draw;
     QTimer m_timer;
     static const int CELL_SIZE = 30;

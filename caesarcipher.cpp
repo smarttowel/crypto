@@ -19,15 +19,18 @@ void CaesarCipherView::paintEvent(QPaintEvent *)
     }
     if(m_draw)
     {
-        pen.setColor(Qt::red);
-        pen.setWidth(3);
-        painter.setPen(pen);
         highlightChar(m_currentChar);
         //draw rectangles
+        pen.setColor(Qt::green);
+        pen.setWidth(3);
+        painter.setPen(pen);
         m_cellRect.setX(10 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_text[m_currentChar]) + 1));
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
+        pen.setColor(Qt::red);
+        pen.setWidth(3);
+        painter.setPen(pen);
         m_cellRect.setX(10 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_encryptedText[m_currentChar]) + 1));
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
@@ -56,12 +59,7 @@ void CaesarCipherView::onNextButtonClick()
     {
         setNextButtonEnabled(false);
         if(m_timer.isActive())
-        {
             on_autoButton_clicked();
-            m_currentChar = 0;
-            setBackButtonEnabled(false);
-            setNextButtonEnabled(true);
-        }
     }
     update();
 }
@@ -85,6 +83,7 @@ CaesarCipherView::CaesarCipherView(QWidget *parent, int a) :
 {
     m_isShow = a;
     m_currentChar = 0;
+    m_token = 1;
     setFixedSize(m_cellRect.x() * 6 + m_cellRect.width() * CryptoHelper::alphabet.length(),
                  200 + m_cellRect.y() * 2 + m_cellRect.height());
     setWindowTitle(QString::fromLocal8Bit("Визуализация шифра Цезаря"));

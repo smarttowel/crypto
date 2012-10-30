@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_settings, SIGNAL(triggered()), &m_settings, SLOT(show()));
     connect(&m_settings, SIGNAL(alphabetChanged()), this, SLOT(reloadCipher()));
     connect(ui->action_aboutProgram, SIGNAL(triggered()), &m_about, SLOT(show()));
+    connect(ui->encryptPushButton, SIGNAL(clicked()), ui->codeOutTextEdit, SLOT(clear()));
 }
 
 MainWindow::~MainWindow()
@@ -57,7 +58,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         case 3:
         {
             m_cipher = new PlayfairCipher(0, m_text);
-            m_visualization = new AbstractCipherView;
+            m_visualization = new PlayfairCipherView(0, int(ui->trainingModeCheckBox->checkState()));
             break;
         }
         case 4:
