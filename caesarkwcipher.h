@@ -2,7 +2,29 @@
 #define CAESARKWCIPHER_H
 
 #include <QWidget>
+#include <QPainter>
+#include <QPen>
 #include "cryptohelper.h"
+#include "abstractcipherview.h"
+
+class CaesarKWCipherView : public AbstractCipherView
+{
+    Q_OBJECT
+
+public:
+    explicit CaesarKWCipherView(QWidget *parent = 0, int a = 0);
+    ~CaesarKWCipherView();
+
+private:
+    int m_currentChar;
+    void draw();
+
+protected:
+    void paintEvent(QPaintEvent *);
+    void onNextButtonClick();
+    void onBackButtonClick();
+    void resetChars();
+};
 
 namespace Ui {
 class CaesarKWCipher;

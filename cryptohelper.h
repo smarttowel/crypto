@@ -44,5 +44,6 @@ signals:
     void encryptedText(QString str);
     void text(QString text);
     void results(QString inText, QString outText);
+    void results(QString alphabet, QString inText, QString outText);
 };
 #endif // CRYPTOHELPER_H

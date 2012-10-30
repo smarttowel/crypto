@@ -20,6 +20,7 @@ public:
 protected:
     QString m_text;
     QString m_encryptedText;
+    QString m_alphabet;
     QRect m_cellRect;
     int m_isShow;
     bool m_draw;
@@ -37,6 +38,7 @@ protected slots:
 
 public slots:
     void setResults(QString inText, QString outText);
+    void setResults(QString alphabet, QString inText, QString outText);
     void setIsShow(int a);
 
 private:

@@ -76,6 +76,12 @@ void AbstractCipherView::setResults(QString inText, QString outText)
     update();
 }
 
+void AbstractCipherView::setResults(QString alphabet, QString inText, QString outText)
+{
+    m_alphabet = alphabet;
+    setResults(inText, outText);
+}
+
 void AbstractCipherView::setIsShow(int a)
 {
     m_isShow = a;

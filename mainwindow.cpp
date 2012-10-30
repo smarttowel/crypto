@@ -51,6 +51,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         case 2:
         {
             m_cipher = new CaesarKWCipher(0, m_text);
+            m_visualization = new CaesarKWCipherView(0, int(ui->trainingModeCheckBox->checkState()));
             break;
         }
         case 3:
@@ -84,6 +85,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
     connect(m_cipher, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
     //
     connect(m_cipher, SIGNAL(results(QString,QString)), m_visualization, SLOT(setResults(QString,QString)));
+    connect(m_cipher, SIGNAL(results(QString,QString,QString)), m_visualization, SLOT(setResults(QString,QString,QString)));
     connect(ui->trainingModeCheckBox, SIGNAL(stateChanged(int)), m_visualization, SLOT(setIsShow(int)));
     ui->codeInputLayout->addWidget(m_cipher);
 }
