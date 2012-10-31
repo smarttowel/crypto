@@ -131,15 +131,20 @@ VigenereCipher::~VigenereCipher()
 
 void VigenereCipher::encryptText()
 {
-    QString inText = CryptoHelper::pre(ui->textEdit->toPlainText());
-    QString key = ui->lineEdit->text();
-    QString outText;
-    QString alphabet = CryptoHelper::alphabet;
-    for(int i = 0; i < inText.length(); i++)
+    if(!ui->lineEdit->text().isEmpty())
     {
-        outText += alphabet[(alphabet.indexOf(inText[i]) + alphabet.indexOf(key[i % key.length()])) % alphabet.length()];
+        QString inText = CryptoHelper::pre(ui->textEdit->toPlainText());
+        QString key = ui->lineEdit->text();
+        QString outText;
+        QString alphabet = CryptoHelper::alphabet;
+        for(int i = 0; i < inText.length(); i++)
+        {
+            outText += alphabet[(alphabet.indexOf(inText[i]) + alphabet.indexOf(key[i % key.length()])) % alphabet.length()];
+        }
+        emit results(key, inText, outText);
+        outText = CryptoHelper::post(outText);
+        emit encryptedText(outText);
     }
-    emit results(key, inText, outText);
-    outText = CryptoHelper::post(outText);
-    emit encryptedText(outText);
+    else
+        emit encryptedText(QString::fromLocal8Bit("Ключ не может быть нулевой длины"));
 }
