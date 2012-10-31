@@ -64,7 +64,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         case 4:
         {
             m_cipher = new TrithemiusCipher(0, m_text);
-            m_visualization = new AbstractCipherView;
+            m_visualization = new TrithemiusCipherView;
             break;
         }
         case 5:
