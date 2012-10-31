@@ -16,7 +16,6 @@ public:
 
 private:
     int m_currentChar;
-    void draw();
 
 protected:
     void paintEvent(QPaintEvent *);

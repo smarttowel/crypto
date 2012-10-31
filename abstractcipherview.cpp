@@ -6,6 +6,7 @@ AbstractCipherView::AbstractCipherView(QWidget *parent) :
     ui(new Ui::AbstractCipherView)
 {
     ui->setupUi(this);
+    CELL_SIZE = 30;
     m_cellRect.setX(10);
     m_cellRect.setY(10);
     m_cellRect.setWidth(CELL_SIZE);

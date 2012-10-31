@@ -26,7 +26,7 @@ protected:
     int m_token;
     bool m_draw;
     QTimer m_timer;
-    static const int CELL_SIZE = 30;
+    int CELL_SIZE;
     void setNextButtonEnabled(bool a);
     void setBackButtonEnabled(bool a);
     virtual void resetChars();

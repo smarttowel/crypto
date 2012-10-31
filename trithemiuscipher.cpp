@@ -74,7 +74,7 @@ TrithemiusCipherView::TrithemiusCipherView(QWidget *parent, int a) :
     m_token = 1;
     setFixedSize(100 + m_cellRect.x() + CELL_SIZE * CryptoHelper::tableSize(CryptoHelper::alphabet.length()).second,
                  200 + m_cellRect.y() * 2 + CELL_SIZE * CryptoHelper::tableSize(CryptoHelper::alphabet.length()).first);
-    setWindowTitle(QString::fromLocal8Bit("Визуализация шифра Плейфера"));
+    setWindowTitle(QString::fromLocal8Bit("Визуализация шифрующей таблицы Трисемуса"));
 }
 
 TrithemiusCipherView::~TrithemiusCipherView()
@@ -91,6 +91,7 @@ TrithemiusCipher::TrithemiusCipher(QWidget *parent, QString text) :
 
 TrithemiusCipher::~TrithemiusCipher()
 {
+    emit text(ui->textEdit->toPlainText());
     delete ui;
 }
 

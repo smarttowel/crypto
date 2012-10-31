@@ -114,6 +114,7 @@ CaesarKWCipher::CaesarKWCipher(QWidget *parent, QString text) :
 
 CaesarKWCipher::~CaesarKWCipher()
 {
+    emit text(ui->textEdit->toPlainText());
     delete ui;
 }
 

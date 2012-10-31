@@ -13,6 +13,7 @@ MagicSquareCipher::MagicSquareCipher(QWidget *parent, QString text) :
 
 MagicSquareCipher::~MagicSquareCipher()
 {
+    emit text(ui->textEdit->toPlainText());
     delete ui;
 }
 

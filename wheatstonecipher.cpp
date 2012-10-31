@@ -19,6 +19,7 @@ WheatstoneCipher::WheatstoneCipher(QWidget *parent, QString text) :
 
 WheatstoneCipher::~WheatstoneCipher()
 {
+    emit text(ui->textEdit->toPlainText());
     delete ui;
 }
 

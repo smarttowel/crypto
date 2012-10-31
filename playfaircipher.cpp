@@ -122,6 +122,7 @@ PlayfairCipher::PlayfairCipher(QWidget *parent, QString text) :
 
 PlayfairCipher::~PlayfairCipher()
 {
+    emit text(ui->textEdit->toPlainText());
     delete ui;
 }
 
