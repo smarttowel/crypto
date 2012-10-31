@@ -64,13 +64,13 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         case 4:
         {
             m_cipher = new TrithemiusCipher(0, m_text);
-            m_visualization = new TrithemiusCipherView;
+            m_visualization = new TrithemiusCipherView(0, int(ui->trainingModeCheckBox->checkState()));
             break;
         }
         case 5:
         {
             m_cipher = new VigenereCipher(0, m_text);
-            m_visualization = new AbstractCipherView;
+            m_visualization = new VigenereCipherView(0, int(ui->trainingModeCheckBox->checkState()));
             break;
         }
         case 6:

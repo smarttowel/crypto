@@ -3,6 +3,26 @@
 
 #include <QWidget>
 #include <cryptohelper.h>
+#include <QPainter>
+#include "abstractcipherview.h"
+
+class VigenereCipherView : public AbstractCipherView
+{
+    Q_OBJECT
+
+public:
+    explicit VigenereCipherView(QWidget *parent = 0, int a = 0);
+    ~VigenereCipherView();
+
+private:
+    int m_currentChar;
+
+protected:
+    void paintEvent(QPaintEvent *);
+    void onNextButtonClick();
+    void onBackButtonClick();
+    void resetChars();
+};
 
 namespace Ui {
 class VigenereCipher;

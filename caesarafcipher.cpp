@@ -35,8 +35,8 @@ void CaesarAfCipher::encryptText()
     {
         text = CryptoHelper::pre(text);
         for(int i = 0; i < text.length(); i++)
-            text[i] = CryptoHelper::alphabet[ui->firstKeyspinBox->value() * i +
-                    ui->secondKeyspinBox->value() % CryptoHelper::alphabet.length()];
+            text[i] = CryptoHelper::alphabet[(ui->firstKeyspinBox->value() * i +
+                    ui->secondKeyspinBox->value()) % CryptoHelper::alphabet.length()];
         emit results(CryptoHelper::pre(ui->textEdit->toPlainText()), text);
         text = CryptoHelper::post(text);
         emit encryptedText(text);
