@@ -83,6 +83,12 @@ void AbstractCipherView::setResults(QString alphabet, QString inText, QString ou
     setResults(inText, outText);
 }
 
+void AbstractCipherView::setResults(QVector<int> square, QString inText, QString outText)
+{
+    m_square = square;
+    setResults(inText, outText);
+}
+
 void AbstractCipherView::setIsShow(int a)
 {
     m_isShow = a;

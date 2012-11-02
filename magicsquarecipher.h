@@ -4,7 +4,27 @@
 #include <QWidget>
 #include <QTableWidget>
 #include <QTableWidgetItem>
+#include <QPainter>
+#include "abstractcipherview.h"
 #include "cryptohelper.h"
+
+class MagicSquareCipherView : public AbstractCipherView
+{
+    Q_OBJECT
+
+public:
+    explicit MagicSquareCipherView(QWidget *parent = 0, int a = 0);
+    ~MagicSquareCipherView();
+
+private:
+    int m_currentChar;
+
+protected:
+    void paintEvent(QPaintEvent *);
+    void onNextButtonClick();
+    void onBackButtonClick();
+    void resetChars();
+};
 
 namespace Ui {
 class MagicSquareCipher;

@@ -76,7 +76,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         case 6:
         {
             m_cipher = new MagicSquareCipher(0, m_text);
-            m_visualization = new AbstractCipherView;
+            m_visualization = new MagicSquareCipherView(0, int(ui->trainingModeCheckBox->checkState()));
             break;
         }
         case 7:
@@ -89,9 +89,9 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
     connect(m_cipher, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
     connect(ui->encryptPushButton, SIGNAL(clicked()), m_cipher, SLOT(encryptText()));
     connect(m_cipher, SIGNAL(text(QString)), this, SLOT(textBuffer(QString)));
-    //
     connect(m_cipher, SIGNAL(results(QString,QString)), m_visualization, SLOT(setResults(QString,QString)));
     connect(m_cipher, SIGNAL(results(QString,QString,QString)), m_visualization, SLOT(setResults(QString,QString,QString)));
+    connect(m_cipher, SIGNAL(results(QVector<int>,QString,QString)), m_visualization, SLOT(setResults(QVector<int>,QString,QString)));
     connect(ui->trainingModeCheckBox, SIGNAL(stateChanged(int)), m_visualization, SLOT(setIsShow(int)));
     ui->codeInputLayout->addWidget(m_cipher);
 }

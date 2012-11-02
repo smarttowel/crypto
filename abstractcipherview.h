@@ -24,6 +24,7 @@ protected:
     QRect m_cellRect;
     int m_isShow;
     int m_token;
+    QVector<int> m_square;
     bool m_draw;
     QTimer m_timer;
     int CELL_SIZE;
@@ -40,6 +41,7 @@ protected slots:
 public slots:
     void setResults(QString inText, QString outText);
     void setResults(QString alphabet, QString inText, QString outText);
+    void setResults(QVector<int> square, QString inText, QString outText);
     void setIsShow(int a);
 
 private:

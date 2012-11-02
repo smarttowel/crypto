@@ -2,6 +2,94 @@
 #include "ui_magicsquarecipher.h"
 #include <QDebug>
 
+void MagicSquareCipherView::paintEvent(QPaintEvent *)
+{
+    int m_squareSize = qSqrt(m_square.size());
+    setFixedSize(100 + CELL_SIZE * m_squareSize, 150 + CELL_SIZE * m_squareSize);
+    QPainter painter(this);
+    QPen pen;
+    painter.setRenderHint(QPainter::Antialiasing);
+    //table
+    for(int i = 0; i < m_squareSize; i++)
+        for(int j = 0; j < m_squareSize; j++)
+        {
+            m_cellRect.setX(10 + CELL_SIZE * (j + 1));
+            m_cellRect.setY(10 + CELL_SIZE * i);
+            m_cellRect.setWidth(CELL_SIZE);
+            m_cellRect.setHeight(CELL_SIZE);
+            pen.setColor(Qt::black);
+            pen.setWidth(1);
+            painter.setPen(pen);
+            painter.drawRect(m_cellRect);
+            if(m_square[m_squareSize * i + j] <= (m_currentChar + 1) % m_square.size() || (m_currentChar + 1) % m_square.size() == 0)
+            {
+                pen.setColor(Qt::red);
+                painter.setPen(pen);
+                painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2,
+                                 QChar(m_text[m_square[i * m_squareSize + j] - 1 + m_currentChar / m_square.size() * m_square.size()]));
+            }
+            else
+            {
+                pen.setColor(Qt::black);
+                painter.setPen(pen);
+                painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2,
+                                 QString::number(m_square[m_squareSize * i + j]));
+            }
+        }
+    if(m_draw)
+    {
+        int index = m_square.indexOf(m_currentChar % m_square.size() + 1);
+        highlightChar(m_currentChar);
+        pen.setColor(Qt::red);
+        pen.setWidth(3);
+        painter.setPen(pen);
+        painter.drawRect(10 + CELL_SIZE * (index % m_squareSize + 1),
+                         10 + CELL_SIZE * (index / m_squareSize),
+                         CELL_SIZE, CELL_SIZE);
+    }
+}
+
+void MagicSquareCipherView::onNextButtonClick()
+{
+    m_currentChar++;
+    setBackButtonEnabled(true);
+    if(m_currentChar == m_text.length() - 1)
+    {
+        setNextButtonEnabled(false);
+        if(m_timer.isActive())
+            on_autoButton_clicked();
+    }
+    update();
+}
+
+void MagicSquareCipherView::onBackButtonClick()
+{
+    m_currentChar--;
+    if(m_currentChar == 0)
+        setBackButtonEnabled(false);
+    setNextButtonEnabled(true);
+    update();
+}
+
+void MagicSquareCipherView::resetChars()
+{
+    m_currentChar = 0;
+}
+
+MagicSquareCipherView::MagicSquareCipherView(QWidget *parent, int a) :
+    AbstractCipherView(parent)
+{
+    m_isShow = a;
+    m_currentChar = 0;
+    m_token = 1;
+    CELL_SIZE = 40;
+    setWindowTitle(QString::fromLocal8Bit("Визуализация шифрования магическим квадратом"));
+}
+
+MagicSquareCipherView::~MagicSquareCipherView()
+{
+}
+
 MagicSquareCipher::MagicSquareCipher(QWidget *parent, QString text) :
     AbstractCipher(parent),
     ui(new Ui::MagicSquareCipher)
@@ -153,6 +241,11 @@ void MagicSquareCipher::encryptText()
             inText.remove(0, itr);
             itr = 0;
         }
+        QVector<int> square;
+        for(int i = 0; i < ui->tableWidget->rowCount(); i++)
+            for(int j = 0; j < ui->tableWidget->columnCount(); j++)
+                square.append(ui->tableWidget->item(i,j)->data(Qt::DisplayRole).toInt());
+        emit results(square, CryptoHelper::pre(ui->textEdit->toPlainText()), outText);
         outText = CryptoHelper::post(outText);
         emit encryptedText(outText);
     }
