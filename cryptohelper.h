@@ -45,6 +45,7 @@ signals:
     void text(QString text);
     void results(QString inText, QString outText);
     void results(QString alphabet, QString inText, QString outText);
+    void results(QString table1, QString table2, QString inText, QString outText);
     void results(QVector<int> square, QString inText, QString outText);
 };
 #endif // CRYPTOHELPER_H

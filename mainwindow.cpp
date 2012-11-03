@@ -82,7 +82,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         case 7:
         {
             m_cipher = new WheatstoneCipher(0, m_text);
-            m_visualization = new AbstractCipherView;
+            m_visualization = new WheatstoneCipherView(0, int(ui->trainingModeCheckBox->checkState()));
             break;
         }
     }
@@ -92,6 +92,7 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
     connect(m_cipher, SIGNAL(results(QString,QString)), m_visualization, SLOT(setResults(QString,QString)));
     connect(m_cipher, SIGNAL(results(QString,QString,QString)), m_visualization, SLOT(setResults(QString,QString,QString)));
     connect(m_cipher, SIGNAL(results(QVector<int>,QString,QString)), m_visualization, SLOT(setResults(QVector<int>,QString,QString)));
+    connect(m_cipher, SIGNAL(results(QString,QString,QString,QString)), m_visualization, SLOT(setResults(QString,QString,QString,QString)));
     connect(ui->trainingModeCheckBox, SIGNAL(stateChanged(int)), m_visualization, SLOT(setIsShow(int)));
     ui->codeInputLayout->addWidget(m_cipher);
 }

@@ -83,6 +83,13 @@ void AbstractCipherView::setResults(QString alphabet, QString inText, QString ou
     setResults(inText, outText);
 }
 
+void AbstractCipherView::setResults(QString table1, QString table2, QString inText, QString outText)
+{
+    m_table1 = table1;
+    m_table2 = table2;
+    setResults(inText, outText);
+}
+
 void AbstractCipherView::setResults(QVector<int> square, QString inText, QString outText)
 {
     m_square = square;

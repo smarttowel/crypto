@@ -21,6 +21,8 @@ protected:
     QString m_text;
     QString m_encryptedText;
     QString m_alphabet;
+    QString m_table1;
+    QString m_table2;
     QRect m_cellRect;
     int m_isShow;
     int m_token;
@@ -41,6 +43,7 @@ protected slots:
 public slots:
     void setResults(QString inText, QString outText);
     void setResults(QString alphabet, QString inText, QString outText);
+    void setResults(QString table1, QString table2, QString inText, QString outText);
     void setResults(QVector<int> square, QString inText, QString outText);
     void setIsShow(int a);
 

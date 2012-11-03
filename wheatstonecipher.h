@@ -3,7 +3,28 @@
 
 #include <QWidget>
 #include <QTime>
+#include <QPainter>
+#include <QPen>
 #include "cryptohelper.h"
+#include "abstractcipherview.h"
+
+class WheatstoneCipherView : public AbstractCipherView
+{
+    Q_OBJECT
+
+public:
+    explicit WheatstoneCipherView(QWidget *parent = 0, int a = 0);
+    ~WheatstoneCipherView();
+
+private:
+    int m_currentChar;
+
+protected:
+    void paintEvent(QPaintEvent *);
+    void onNextButtonClick();
+    void onBackButtonClick();
+    void resetChars();
+};
 
 namespace Ui {
 class WheatstoneCipher;
