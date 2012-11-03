@@ -20,14 +20,14 @@ void CaesarKWCipherView::paintEvent(QPaintEvent *)
         painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2, QChar(CryptoHelper::alphabet[i]));
     }
     //second alphabet
-    for(int i = 0; i < m_alphabet.length(); i++)
+    for(int i = 0; i < m_table1.length(); i++)
     {
         m_cellRect.setX(10 + CELL_SIZE * (i + 1));
         m_cellRect.setY(10 + CELL_SIZE * 3);
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
-        painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2, QChar(m_alphabet[i]));
+        painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2, QChar(m_table1[i]));
     }
     if(m_draw)
     {
@@ -44,48 +44,21 @@ void CaesarKWCipherView::paintEvent(QPaintEvent *)
         pen.setColor(Qt::red);
         pen.setWidth(3);
         painter.setPen(pen);
-        m_cellRect.setX(10 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1));
+        m_cellRect.setX(10 + CELL_SIZE * (m_table1.indexOf(m_encryptedText[m_currentChar]) + 1));
         m_cellRect.setY(10 + CELL_SIZE * 3);
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
         //draw lines
         painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_text[m_currentChar]) + 1), 10 + CELL_SIZE,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3);
+                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_table1.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3);
         //draw arrow
-        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) + 8, 10 + CELL_SIZE * 3 - 8);
-        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3,
-                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_alphabet.indexOf(m_encryptedText[m_currentChar]) + 1) - 8, 10 + CELL_SIZE * 3 - 8);
+        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_table1.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3,
+                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_table1.indexOf(m_encryptedText[m_currentChar]) + 1) + 8, 10 + CELL_SIZE * 3 - 8);
+        painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (m_table1.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3,
+                         10 + CELL_SIZE / 2 + CELL_SIZE * (m_table1.indexOf(m_encryptedText[m_currentChar]) + 1) - 8, 10 + CELL_SIZE * 3 - 8);
 
     }
-}
-
-void CaesarKWCipherView::onNextButtonClick()
-{
-    m_currentChar++;
-    setBackButtonEnabled(true);
-    if(m_currentChar == m_text.length() - 1)
-    {
-        setNextButtonEnabled(false);
-        if(m_timer.isActive())
-            on_autoButton_clicked();
-    }
-    update();
-}
-
-void CaesarKWCipherView::onBackButtonClick()
-{
-    m_currentChar--;
-    if(m_currentChar == 0)
-        setBackButtonEnabled(false);
-    setNextButtonEnabled(true);
-    update();
-}
-
-void CaesarKWCipherView::resetChars()
-{
-    m_currentChar = 0;
 }
 
 CaesarKWCipherView::CaesarKWCipherView(QWidget *parent, int a) :

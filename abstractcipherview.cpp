@@ -36,6 +36,7 @@ void AbstractCipherView::setBackButtonEnabled(bool a)
 
 void AbstractCipherView::resetChars()
 {
+    m_currentChar = 0;
 }
 
 void AbstractCipherView::highlightChar(int index)
@@ -79,15 +80,14 @@ void AbstractCipherView::setResults(QString inText, QString outText)
 
 void AbstractCipherView::setResults(QString alphabet, QString inText, QString outText)
 {
-    m_alphabet = alphabet;
+    m_table1 = alphabet;
     setResults(inText, outText);
 }
 
 void AbstractCipherView::setResults(QString table1, QString table2, QString inText, QString outText)
 {
-    m_table1 = table1;
     m_table2 = table2;
-    setResults(inText, outText);
+    setResults(table1, inText, outText);
 }
 
 void AbstractCipherView::setResults(QVector<int> square, QString inText, QString outText)
@@ -103,11 +103,26 @@ void AbstractCipherView::setIsShow(int a)
 
 void AbstractCipherView::onNextButtonClick()
 {
+    m_currentChar += m_token;
+    setBackButtonEnabled(true);
+    if(m_currentChar + m_token / 2 == m_text.length() - 1)
+    {
+        setNextButtonEnabled(false);
+        if(m_timer.isActive())
+            on_autoButton_clicked();
+    }
+    update();
 }
 
 void AbstractCipherView::onBackButtonClick()
 {
+    m_currentChar -= m_token;
+    if(m_currentChar == 0)
+        setBackButtonEnabled(false);
+    setNextButtonEnabled(true);
+    update();
 }
+
 void AbstractCipherView::on_autoButton_clicked()
 {
     if(m_timer.isActive())

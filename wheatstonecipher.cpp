@@ -65,33 +65,6 @@ void WheatstoneCipherView::paintEvent(QPaintEvent *)
     }
 }
 
-void WheatstoneCipherView::onNextButtonClick()
-{
-    m_currentChar += 2;
-    setBackButtonEnabled(true);
-    if(m_currentChar + 1 == m_text.length() - 1)
-    {
-        setNextButtonEnabled(false);
-        if(m_timer.isActive())
-            on_autoButton_clicked();
-    }
-    update();
-}
-
-void WheatstoneCipherView::onBackButtonClick()
-{
-    m_currentChar -= 2;
-    if(m_currentChar == 0)
-        setBackButtonEnabled(false);
-    setNextButtonEnabled(true);
-    update();
-}
-
-void WheatstoneCipherView::resetChars()
-{
-    m_currentChar = 0;
-}
-
 WheatstoneCipherView::WheatstoneCipherView(QWidget *parent, int a) :
     AbstractCipherView(parent)
 {

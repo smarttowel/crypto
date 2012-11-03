@@ -15,7 +15,6 @@ void VigenereCipherView::paintEvent(QPaintEvent *)
         m_cellRect.setY(10);
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
-        //painter.drawRect(m_cellRect);
         painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE * 0.75, QChar(CryptoHelper::alphabet[i]));
     }
     //draw vertical alphabet for key
@@ -25,7 +24,6 @@ void VigenereCipherView::paintEvent(QPaintEvent *)
         m_cellRect.setY(10 + CELL_SIZE * (i + 1));
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
-        //painter.drawRect(m_cellRect);
         painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE * 0.75, QChar(CryptoHelper::alphabet[i]));
     }
     //draw big table
@@ -43,7 +41,7 @@ void VigenereCipherView::paintEvent(QPaintEvent *)
     if(m_draw)
     {
         int alIndex = CryptoHelper::alphabet.indexOf(m_text[m_currentChar]);
-        int keyIndex = CryptoHelper::alphabet.indexOf(m_alphabet[m_currentChar % m_alphabet.length()]);
+        int keyIndex = CryptoHelper::alphabet.indexOf(m_table1[m_currentChar % m_table1.length()]);
         highlightChar(m_currentChar);
         pen.setColor(Qt::green);
         pen.setWidth(3);
@@ -70,33 +68,6 @@ void VigenereCipherView::paintEvent(QPaintEvent *)
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
     }
-}
-
-void VigenereCipherView::onNextButtonClick()
-{
-    m_currentChar++;
-    setBackButtonEnabled(true);
-    if(m_currentChar == m_text.length() - 1)
-    {
-        setNextButtonEnabled(false);
-        if(m_timer.isActive())
-            on_autoButton_clicked();
-    }
-    update();
-}
-
-void VigenereCipherView::onBackButtonClick()
-{
-    m_currentChar--;
-    if(m_currentChar == 0)
-        setBackButtonEnabled(false);
-    setNextButtonEnabled(true);
-    update();
-}
-
-void VigenereCipherView::resetChars()
-{
-    m_currentChar = 0;
 }
 
 VigenereCipherView::VigenereCipherView(QWidget *parent, int a) :

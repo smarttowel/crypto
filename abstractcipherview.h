@@ -20,24 +20,24 @@ public:
 protected:
     QString m_text;
     QString m_encryptedText;
-    QString m_alphabet;
     QString m_table1;
     QString m_table2;
     QRect m_cellRect;
     int m_isShow;
     int m_token;
+    int m_currentChar;
     QVector<int> m_square;
     bool m_draw;
     QTimer m_timer;
     int CELL_SIZE;
     void setNextButtonEnabled(bool a);
     void setBackButtonEnabled(bool a);
-    virtual void resetChars();
+    void resetChars();
     void highlightChar(int index);
 
 protected slots:
-    virtual void onNextButtonClick();
-    virtual void onBackButtonClick();
+    void onNextButtonClick();
+    void onBackButtonClick();
     void on_autoButton_clicked();
 
 public slots:

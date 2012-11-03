@@ -15,14 +15,8 @@ public:
     explicit PlayfairCipherView(QWidget *parent = 0, int a = 0);
     ~PlayfairCipherView();
 
-private:
-    int m_currentChar;
-
 protected:
     void paintEvent(QPaintEvent *);
-    void onNextButtonClick();
-    void onBackButtonClick();
-    void resetChars();
 };
 
 namespace Ui {

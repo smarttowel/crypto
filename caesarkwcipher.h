@@ -15,14 +15,8 @@ public:
     explicit CaesarKWCipherView(QWidget *parent = 0, int a = 0);
     ~CaesarKWCipherView();
 
-private:
-    int m_currentChar;
-
 protected:
     void paintEvent(QPaintEvent *);
-    void onNextButtonClick();
-    void onBackButtonClick();
-    void resetChars();
 };
 
 namespace Ui {

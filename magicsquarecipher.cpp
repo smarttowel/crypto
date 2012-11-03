@@ -49,33 +49,6 @@ void MagicSquareCipherView::paintEvent(QPaintEvent *)
     }
 }
 
-void MagicSquareCipherView::onNextButtonClick()
-{
-    m_currentChar++;
-    setBackButtonEnabled(true);
-    if(m_currentChar == m_text.length() - 1)
-    {
-        setNextButtonEnabled(false);
-        if(m_timer.isActive())
-            on_autoButton_clicked();
-    }
-    update();
-}
-
-void MagicSquareCipherView::onBackButtonClick()
-{
-    m_currentChar--;
-    if(m_currentChar == 0)
-        setBackButtonEnabled(false);
-    setNextButtonEnabled(true);
-    update();
-}
-
-void MagicSquareCipherView::resetChars()
-{
-    m_currentChar = 0;
-}
-
 MagicSquareCipherView::MagicSquareCipherView(QWidget *parent, int a) :
     AbstractCipherView(parent)
 {

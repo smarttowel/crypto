@@ -9,7 +9,7 @@ void TrithemiusCipherView::paintEvent(QPaintEvent *)
     painter.setRenderHint(QPainter::Antialiasing);
     pen.setColor(Qt::black);
     pen.setWidth(3);
-    QPair<int, int> tableSize = CryptoHelper::tableSize(m_alphabet.length());
+    QPair<int, int> tableSize = CryptoHelper::tableSize(m_table1.length());
     //table
     for(int i = 0; i < tableSize.first; i++)
         for(int j = 0; j < tableSize.second; j++)
@@ -19,12 +19,12 @@ void TrithemiusCipherView::paintEvent(QPaintEvent *)
             m_cellRect.setWidth(CELL_SIZE);
             m_cellRect.setHeight(CELL_SIZE);
             painter.drawRect(m_cellRect);
-            painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2, QChar(m_alphabet[tableSize.second * i + j]));
+            painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2, QChar(m_table1[tableSize.second * i + j]));
         }
     if(m_draw)
     {
         highlightChar(m_currentChar);
-        int index = m_alphabet.indexOf(m_text[m_currentChar]);
+        int index = m_table1.indexOf(m_text[m_currentChar]);
         //source local rectangles
         pen.setColor(Qt::green);
         painter.setPen(pen);
@@ -37,33 +37,6 @@ void TrithemiusCipherView::paintEvent(QPaintEvent *)
                          10 + CELL_SIZE * ((index / tableSize.second + 1) % tableSize.first),
                          CELL_SIZE, CELL_SIZE);
     }
-}
-
-void TrithemiusCipherView::onNextButtonClick()
-{
-    m_currentChar++;
-    setBackButtonEnabled(true);
-    if(m_currentChar == m_text.length() - 1)
-    {
-        setNextButtonEnabled(false);
-        if(m_timer.isActive())
-            on_autoButton_clicked();
-    }
-    update();
-}
-
-void TrithemiusCipherView::onBackButtonClick()
-{
-    m_currentChar--;
-    if(m_currentChar == 0)
-        setBackButtonEnabled(false);
-    setNextButtonEnabled(true);
-    update();
-}
-
-void TrithemiusCipherView::resetChars()
-{
-    m_currentChar = 0;
 }
 
 TrithemiusCipherView::TrithemiusCipherView(QWidget *parent, int a) :

@@ -9,7 +9,7 @@ void PlayfairCipherView::paintEvent(QPaintEvent *)
     painter.setRenderHint(QPainter::Antialiasing);
     pen.setColor(Qt::black);
     pen.setWidth(3);
-    QPair<int, int> tableSize = CryptoHelper::tableSize(m_alphabet.length());
+    QPair<int, int> tableSize = CryptoHelper::tableSize(m_table1.length());
     //table
     for(int i = 0; i < tableSize.first; i++)
         for(int j = 0; j < tableSize.second; j++)
@@ -19,13 +19,13 @@ void PlayfairCipherView::paintEvent(QPaintEvent *)
             m_cellRect.setWidth(CELL_SIZE);
             m_cellRect.setHeight(CELL_SIZE);
             painter.drawRect(m_cellRect);
-            painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2, QChar(m_alphabet[tableSize.second * i + j]));
+            painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2, QChar(m_table1[tableSize.second * i + j]));
         }
     if(m_draw)
     {
         highlightChar(m_currentChar);
-        int first = m_alphabet.indexOf(m_text[m_currentChar]);
-        int second = m_alphabet.indexOf(m_text[m_currentChar + 1]);
+        int first = m_table1.indexOf(m_text[m_currentChar]);
+        int second = m_table1.indexOf(m_text[m_currentChar + 1]);
         if(first % tableSize.second > second % tableSize.second)
         {
             first = first + second;
@@ -68,33 +68,6 @@ void PlayfairCipherView::paintEvent(QPaintEvent *)
                              CELL_SIZE, CELL_SIZE);
         }
     }
-}
-
-void PlayfairCipherView::onNextButtonClick()
-{
-    m_currentChar += 2;
-    setBackButtonEnabled(true);
-    if(m_currentChar + 1 == m_text.length() - 1)
-    {
-        setNextButtonEnabled(false);
-        if(m_timer.isActive())
-            on_autoButton_clicked();
-    }
-    update();
-}
-
-void PlayfairCipherView::onBackButtonClick()
-{
-    m_currentChar -= 2;
-    if(m_currentChar == 0)
-        setBackButtonEnabled(false);
-    setNextButtonEnabled(true);
-    update();
-}
-
-void PlayfairCipherView::resetChars()
-{
-    m_currentChar = 0;
 }
 
 PlayfairCipherView::PlayfairCipherView(QWidget *parent, int a) :
