@@ -17,20 +17,20 @@ void MagicSquareCipherView::paintEvent(QPaintEvent *)
             m_cellRect.setY(10 + CELL_SIZE * i);
             m_cellRect.setWidth(CELL_SIZE);
             m_cellRect.setHeight(CELL_SIZE);
-            pen.setColor(Qt::black);
+            pen.setColor(CryptoHelper::tableColor);
             pen.setWidth(1);
             painter.setPen(pen);
             painter.drawRect(m_cellRect);
             if(m_square[m_squareSize * i + j] <= (m_currentChar + 1) % m_square.size() || (m_currentChar + 1) % m_square.size() == 0)
             {
-                pen.setColor(Qt::red);
+                pen.setColor(CryptoHelper::outCharsColor);
                 painter.setPen(pen);
                 painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2,
                                  QChar(m_text[m_square[i * m_squareSize + j] - 1 + m_currentChar / m_square.size() * m_square.size()]));
             }
             else
             {
-                pen.setColor(Qt::black);
+                pen.setColor(CryptoHelper::tableColor);
                 painter.setPen(pen);
                 painter.drawText(m_cellRect.x() + CELL_SIZE / 3, m_cellRect.y() + CELL_SIZE / 2,
                                  QString::number(m_square[m_squareSize * i + j]));
@@ -40,7 +40,7 @@ void MagicSquareCipherView::paintEvent(QPaintEvent *)
     {
         int index = m_square.indexOf(m_currentChar % m_square.size() + 1);
         highlightChar(m_currentChar);
-        pen.setColor(Qt::red);
+        pen.setColor(CryptoHelper::outCharsColor);
         pen.setWidth(3);
         painter.setPen(pen);
         painter.drawRect(10 + CELL_SIZE * (index % m_squareSize + 1),

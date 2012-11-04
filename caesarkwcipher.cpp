@@ -7,8 +7,8 @@ void CaesarKWCipherView::paintEvent(QPaintEvent *)
     QPainter painter(this);
     QPen pen;
     painter.setRenderHint(QPainter::Antialiasing);
-    pen.setColor(Qt::black);
-    pen.setWidth(3);
+    pen.setColor(CryptoHelper::tableColor);
+    painter.setPen(pen);
     //first alphabet
     for(int i = 0; i < CryptoHelper::alphabet.length(); i++)
     {
@@ -31,7 +31,7 @@ void CaesarKWCipherView::paintEvent(QPaintEvent *)
     }
     if(m_draw)
     {
-        pen.setColor(Qt::green);
+        pen.setColor(CryptoHelper::inCharsColor);
         pen.setWidth(3);
         painter.setPen(pen);
         highlightChar(m_currentChar);
@@ -41,7 +41,7 @@ void CaesarKWCipherView::paintEvent(QPaintEvent *)
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
-        pen.setColor(Qt::red);
+        pen.setColor(CryptoHelper::outCharsColor);
         pen.setWidth(3);
         painter.setPen(pen);
         m_cellRect.setX(10 + CELL_SIZE * (m_table1.indexOf(m_encryptedText[m_currentChar]) + 1));
@@ -49,6 +49,9 @@ void CaesarKWCipherView::paintEvent(QPaintEvent *)
         m_cellRect.setWidth(CELL_SIZE);
         m_cellRect.setHeight(CELL_SIZE);
         painter.drawRect(m_cellRect);
+        painter.drawRect(m_cellRect);
+        pen.setColor(CryptoHelper::arrowColor);
+        pen.setWidth(3);
         //draw lines
         painter.drawLine(10 + CELL_SIZE / 2 + CELL_SIZE * (CryptoHelper::alphabet.indexOf(m_text[m_currentChar]) + 1), 10 + CELL_SIZE,
                          10 + CELL_SIZE / 2 + CELL_SIZE * (m_table1.indexOf(m_encryptedText[m_currentChar]) + 1), 10 + CELL_SIZE * 3);

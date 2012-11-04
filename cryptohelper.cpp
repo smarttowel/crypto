@@ -89,6 +89,11 @@ QPair<int, int> CryptoHelper::tableSize(int alphabetLength)
 QString CryptoHelper::alphabet = "";
 QString CryptoHelper::extAlphabet = "";
 int CryptoHelper::tokenLength = 4;
+Qt::GlobalColor CryptoHelper::inCharsColor = Qt::green;
+Qt::GlobalColor CryptoHelper::outCharsColor = Qt::red;
+Qt::GlobalColor CryptoHelper::tableColor = Qt::black;
+Qt::GlobalColor CryptoHelper::arrowColor = Qt::red;
+int CryptoHelper::interval = 1000;
 
 AbstractCipher::AbstractCipher(QWidget *parent) :
     QWidget(parent)

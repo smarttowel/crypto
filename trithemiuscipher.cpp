@@ -7,8 +7,8 @@ void TrithemiusCipherView::paintEvent(QPaintEvent *)
     QPainter painter(this);
     QPen pen;
     painter.setRenderHint(QPainter::Antialiasing);
-    pen.setColor(Qt::black);
-    pen.setWidth(3);
+    pen.setColor(CryptoHelper::tableColor);
+    painter.setPen(pen);
     QPair<int, int> tableSize = CryptoHelper::tableSize(m_table1.length());
     //table
     for(int i = 0; i < tableSize.first; i++)
@@ -26,12 +26,14 @@ void TrithemiusCipherView::paintEvent(QPaintEvent *)
         highlightChar(m_currentChar);
         int index = m_table1.indexOf(m_text[m_currentChar]);
         //source local rectangles
-        pen.setColor(Qt::green);
+        pen.setColor(CryptoHelper::inCharsColor);
+        pen.setWidth(3);
         painter.setPen(pen);
         painter.drawRect(10 + CELL_SIZE * (index % tableSize.second + 1), 10 + CELL_SIZE * (index / tableSize.second),
                          CELL_SIZE, CELL_SIZE);
         //finish local rectangles
-        pen.setColor(Qt::red);
+        pen.setColor(CryptoHelper::outCharsColor);
+        pen.setWidth(3);
         painter.setPen(pen);
         painter.drawRect(10 + CELL_SIZE * (index % tableSize.second + 1),
                          10 + CELL_SIZE * ((index / tableSize.second + 1) % tableSize.first),

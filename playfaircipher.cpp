@@ -7,8 +7,8 @@ void PlayfairCipherView::paintEvent(QPaintEvent *)
     QPainter painter(this);
     QPen pen;
     painter.setRenderHint(QPainter::Antialiasing);
-    pen.setColor(Qt::black);
-    pen.setWidth(3);
+    pen.setColor(CryptoHelper::tableColor);
+    painter.setPen(pen);
     QPair<int, int> tableSize = CryptoHelper::tableSize(m_table1.length());
     //table
     for(int i = 0; i < tableSize.first; i++)
@@ -33,14 +33,16 @@ void PlayfairCipherView::paintEvent(QPaintEvent *)
             first = first - second;
         }
         //source local rectangles
-        pen.setColor(Qt::green);
+        pen.setColor(CryptoHelper::inCharsColor);
+        pen.setWidth(3);
         painter.setPen(pen);
         painter.drawRect(10 + CELL_SIZE * (first % tableSize.second + 1), 10 + CELL_SIZE * (first / tableSize.second),
                          CELL_SIZE, CELL_SIZE);
         painter.drawRect(10 + CELL_SIZE * (second % tableSize.second + 1), 10 + CELL_SIZE * (second / tableSize.second),
                          CELL_SIZE, CELL_SIZE);
         //finish local rectangles
-        pen.setColor(Qt::red);
+        pen.setColor(CryptoHelper::outCharsColor);
+        pen.setWidth(3);
         painter.setPen(pen);
         if(first / tableSize.second == second / tableSize.second)
         {

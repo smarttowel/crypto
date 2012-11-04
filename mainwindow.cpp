@@ -12,10 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     m_visualization = 0;
     move(QApplication::desktop()->geometry().width() / 2 - this->geometry().width() / 2,
          QApplication::desktop()->geometry().height() / 2 - this->geometry().height() / 2);
-    CryptoHelper::alphabet = QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя");
-    CryptoHelper::extAlphabet = QString::fromLocal8Bit(" :,.");
-    CryptoHelper::tokenLength = 4;
-    on_ciphiersComboBox_currentIndexChanged(ui->ciphiersComboBox->currentIndex());
     connect(ui->action_saveToFile, SIGNAL(triggered()), this, SLOT(saveToFile()));
     connect(ui->action_aboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(ui->action_Exit, SIGNAL(triggered()), qApp, SLOT(quit()));
@@ -23,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&m_settings, SIGNAL(alphabetChanged()), this, SLOT(reloadCipher()));
     connect(ui->action_aboutProgram, SIGNAL(triggered()), &m_about, SLOT(show()));
     connect(ui->encryptPushButton, SIGNAL(clicked()), ui->codeOutTextEdit, SLOT(clear()));
+    on_ciphiersComboBox_currentIndexChanged(ui->ciphiersComboBox->currentIndex());
 }
 
 MainWindow::~MainWindow()

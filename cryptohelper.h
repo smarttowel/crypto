@@ -24,11 +24,11 @@ public:
     static QString alphabet;
     static QString extAlphabet;
     static int tokenLength;
-
-signals:
-    
-public slots:
-    
+    static Qt::GlobalColor tableColor;
+    static Qt::GlobalColor inCharsColor;
+    static Qt::GlobalColor outCharsColor;
+    static Qt::GlobalColor arrowColor;
+    static int interval;
 };
 
 class AbstractCipher : public QWidget

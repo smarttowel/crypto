@@ -2,8 +2,8 @@
 #define SETTINGSDIALOG_H
 
 #include <QWidget>
-#include <cryptohelper.h>
 #include <QDesktopWidget>
+#include "cryptohelper.h"
 
 namespace Ui {
 class SettingsDialog;

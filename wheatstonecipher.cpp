@@ -7,8 +7,8 @@ void WheatstoneCipherView::paintEvent(QPaintEvent *)
     QPainter painter(this);
     QPen pen;
     painter.setRenderHint(QPainter::Antialiasing);
-    pen.setColor(Qt::black);
-    pen.setWidth(3);
+    pen.setColor(CryptoHelper::tableColor);
+    painter.setPen(pen);
     QPair<int, int> tableSize = CryptoHelper::tableSize(CryptoHelper::alphabet.length() + CryptoHelper::extAlphabet.length());
     //second table
     for(int i = 0; i < tableSize.first; i++)
@@ -39,14 +39,16 @@ void WheatstoneCipherView::paintEvent(QPaintEvent *)
         int first = m_table1.indexOf(m_text[m_currentChar]);
         int second = m_table2.indexOf(m_text[m_currentChar + 1]);
         //source local rectangles
-        pen.setColor(Qt::green);
+        pen.setColor(CryptoHelper::inCharsColor);
+        pen.setWidth(3);
         painter.setPen(pen);
         painter.drawRect(10 + CELL_SIZE * (first % tableSize.second + 1), 10 + CELL_SIZE * (first / tableSize.second),
                          CELL_SIZE, CELL_SIZE);
         painter.drawRect(30 + CELL_SIZE * (tableSize.second + second % tableSize.second + 1), 10 + CELL_SIZE * (second / tableSize.second),
                          CELL_SIZE, CELL_SIZE);
         //finish local rectangles
-        pen.setColor(Qt::red);
+        pen.setColor(CryptoHelper::outCharsColor);
+        pen.setWidth(3);
         painter.setPen(pen);
         if(first / tableSize.second == second / tableSize.second)
         {

@@ -13,7 +13,6 @@ AbstractCipherView::AbstractCipherView(QWidget *parent) :
     m_cellRect.setHeight(CELL_SIZE);
     ui->backButton->setEnabled(false);
     m_draw = false;
-    m_timer.setInterval(1000);
     connect(ui->nextButton, SIGNAL(clicked()), this, SLOT(onNextButtonClick()));
     connect(ui->backButton, SIGNAL(clicked()), this, SLOT(onBackButtonClick()));
     connect(&m_timer, SIGNAL(timeout()), this, SLOT(onNextButtonClick()));
@@ -132,7 +131,7 @@ void AbstractCipherView::on_autoButton_clicked()
     }
     else
     {
-        m_timer.start();
+        m_timer.start(CryptoHelper::interval);
         ui->autoButton->setText(QString::fromLocal8Bit("Стоп"));
     }
 }
