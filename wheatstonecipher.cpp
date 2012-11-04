@@ -187,7 +187,6 @@ void WheatstoneCipher::encryptText()
                 table2 += ui->secondKeyTableWidget->item(i,j)->data(Qt::DisplayRole).toString();
             }
         emit results(table1, table2, inText, outText);
-        outText = CryptoHelper::post(outText);
         emit encryptedText(outText);
     }
     else

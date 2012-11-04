@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     move(QApplication::desktop()->geometry().width() / 2 - this->geometry().width() / 2,
          QApplication::desktop()->geometry().height() / 2 - this->geometry().height() / 2);
     CryptoHelper::alphabet = QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя");
+    CryptoHelper::extAlphabet = QString::fromLocal8Bit(" :,.");
     CryptoHelper::tokenLength = 4;
     on_ciphiersComboBox_currentIndexChanged(ui->ciphiersComboBox->currentIndex());
     connect(ui->action_saveToFile, SIGNAL(triggered()), this, SLOT(saveToFile()));
