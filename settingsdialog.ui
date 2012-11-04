@@ -210,6 +210,13 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
+      <widget class="QPushButton" name="defaultSettingsPushButton">
+       <property name="text">
+        <string>По умолчанию</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -225,7 +232,7 @@
      <item>
       <widget class="QPushButton" name="applyPushButton">
        <property name="text">
-        <string>Ok</string>
+        <string>ОК</string>
        </property>
       </widget>
      </item>

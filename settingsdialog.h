@@ -17,10 +17,11 @@ class SettingsDialog : public QWidget
 public:
     explicit SettingsDialog(QWidget *parent = 0);
     ~SettingsDialog();
-    
+
 private slots:
     void on_cancelPushButton_clicked();
     void on_applyPushButton_clicked();
+    void returnDefaultSettings();
 
 private:
     Ui::SettingsDialog *ui;

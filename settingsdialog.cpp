@@ -9,6 +9,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     setWindowModality(Qt::ApplicationModal);
     move(QApplication::desktop()->geometry().width() / 2 - this->geometry().width() / 2,
          QApplication::desktop()->geometry().height() / 2 - this->geometry().height() / 2);
+    connect(ui->defaultSettingsPushButton, SIGNAL(clicked()), this, SLOT(returnDefaultSettings()));
     QStringList list;
     list << "black" << "white" << "darkGray" << "gray" << "lightGray" << "red"  << "green"  << "blue" << "cyan" << "magenta" << "yellow" <<
          "darkRed" << "darkGreen" << "darkBlue" << "darkCyan"  << "darkMagenta" << "darkYellow";
@@ -25,7 +26,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     CryptoHelper::inCharsColor = Qt::GlobalColor(settings.value("inCharsColor", 8).toInt());
     CryptoHelper::outCharsColor = Qt::GlobalColor(settings.value("outCharsColor", 7).toInt());
     CryptoHelper::arrowColor = Qt::GlobalColor(settings.value("arrowColor", 7).toInt());
-    CryptoHelper::interval = settings.value("interval", 1000).toInt();
+    CryptoHelper::interval = settings.value("interval", 500).toInt();
     ui->alphabetLineEdit->setText(CryptoHelper::alphabet);
     ui->extAlphabetLineEdit->setText(CryptoHelper::extAlphabet);
     ui->tokenLengthSpinBox->setValue(CryptoHelper::tokenLength);
@@ -83,4 +84,16 @@ void SettingsDialog::on_applyPushButton_clicked()
     }
     else
         ui->msgLabel->setText(QString::fromLocal8Bit("<font color = \"red\">Символы в алфавите не должны повторяться!</font>"));
+}
+
+void SettingsDialog::returnDefaultSettings()
+{
+    ui->alphabetLineEdit->setText(QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя"));
+    ui->extAlphabetLineEdit->setText(QString::fromLocal8Bit(" :,."));
+    ui->tokenLengthSpinBox->setValue(4);
+    ui->tableColorComboBox->setCurrentIndex(0);
+    ui->inCharsColorComboBox->setCurrentIndex(6);
+    ui->outCharsColorComboBox->setCurrentIndex(5);
+    ui->ArrowColorComboBox->setCurrentIndex(5);
+    ui->intervalSpinBox->setValue(500);
 }
