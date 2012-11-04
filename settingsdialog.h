@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QDesktopWidget>
+#include <QSettings>
 #include "cryptohelper.h"
 
 namespace Ui {

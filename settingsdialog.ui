@@ -170,7 +170,7 @@
            <item>
             <widget class="QSpinBox" name="intervalSpinBox">
              <property name="suffix">
-              <string>ms</string>
+              <string>msec</string>
              </property>
              <property name="minimum">
               <number>100</number>
