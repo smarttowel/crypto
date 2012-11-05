@@ -23,16 +23,6 @@ AbstractCipherView::~AbstractCipherView()
     delete ui;
 }
 
-void AbstractCipherView::setNextButtonEnabled(bool a)
-{
-    ui->nextButton->setEnabled(a);
-}
-
-void AbstractCipherView::setBackButtonEnabled(bool a)
-{
-    ui->backButton->setEnabled(a);
-}
-
 void AbstractCipherView::resetChars()
 {
     m_currentChar = 0;
@@ -56,8 +46,8 @@ void AbstractCipherView::setResults(QString inText, QString outText)
     m_encryptedText = outText;
     if(m_text.length() == 0 || m_text.length() == m_token)
     {
-        setNextButtonEnabled(false);
-        setBackButtonEnabled(false);
+        ui->nextButton->setEnabled(false);
+        ui->backButton->setEnabled(false);
         if(m_text.length())
             m_draw = true;
         else
@@ -65,8 +55,8 @@ void AbstractCipherView::setResults(QString inText, QString outText)
     }
     else
     {
-        setNextButtonEnabled(true);
-        setBackButtonEnabled(false);
+        ui->nextButton->setEnabled(true);
+        ui->backButton->setEnabled(false);
         m_draw = true;
     }
     ui->inTextEdit->setText(inText);
@@ -103,12 +93,15 @@ void AbstractCipherView::setIsShow(int a)
 void AbstractCipherView::onNextButtonClick()
 {
     m_currentChar += m_token;
-    setBackButtonEnabled(true);
+    ui->backButton->setEnabled(true);
     if(m_currentChar + m_token / 2 == m_text.length() - 1)
     {
-        setNextButtonEnabled(false);
+        ui->nextButton->setEnabled(false);
         if(m_timer.isActive())
+        {
             on_autoButton_clicked();
+            ui->autoButton->setEnabled(false);
+        }
     }
     update();
 }
@@ -117,8 +110,9 @@ void AbstractCipherView::onBackButtonClick()
 {
     m_currentChar -= m_token;
     if(m_currentChar == 0)
-        setBackButtonEnabled(false);
-    setNextButtonEnabled(true);
+        ui->backButton->setEnabled(false);
+    ui->nextButton->setEnabled(true);
+    ui->autoButton->setEnabled(true);
     update();
 }
 

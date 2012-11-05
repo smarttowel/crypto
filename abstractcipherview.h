@@ -30,8 +30,6 @@ protected:
     bool m_draw;
     QTimer m_timer;
     int CELL_SIZE;
-    void setNextButtonEnabled(bool a);
-    void setBackButtonEnabled(bool a);
     void resetChars();
     void highlightChar(int index);
 
