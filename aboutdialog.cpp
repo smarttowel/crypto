@@ -6,6 +6,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
+    setWindowModality(Qt::ApplicationModal);
     move(QApplication::desktop()->geometry().width() / 2 - this->geometry().width() / 2,
          QApplication::desktop()->geometry().height() / 2 - this->geometry().height() / 2);
 }
