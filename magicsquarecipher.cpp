@@ -21,7 +21,8 @@ void MagicSquareCipherView::paintEvent(QPaintEvent *)
             pen.setWidth(1);
             painter.setPen(pen);
             painter.drawRect(m_cellRect);
-            if(m_square[m_squareSize * i + j] <= (m_currentChar + 1) % m_square.size() || (m_currentChar + 1) % m_square.size() == 0)
+            if((m_square[m_squareSize * i + j] <= (m_currentChar + 1) % m_square.size() || (m_currentChar + 1) % m_square.size() == 0) &&
+                    !m_text.isEmpty())
             {
                 pen.setColor(CryptoHelper::outCharsColor);
                 painter.setPen(pen);
