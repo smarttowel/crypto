@@ -48,6 +48,7 @@ void AbstractCipherView::setResults(QString inText, QString outText)
     {
         ui->nextButton->setEnabled(false);
         ui->backButton->setEnabled(false);
+        ui->autoButton->setEnabled(false);
         if(m_text.length())
             m_draw = true;
         else
@@ -57,6 +58,7 @@ void AbstractCipherView::setResults(QString inText, QString outText)
     {
         ui->nextButton->setEnabled(true);
         ui->backButton->setEnabled(false);
+        ui->autoButton->setEnabled(true);
         m_draw = true;
     }
     ui->inTextEdit->setText(inText);
@@ -98,10 +100,8 @@ void AbstractCipherView::onNextButtonClick()
     {
         ui->nextButton->setEnabled(false);
         if(m_timer.isActive())
-        {
             on_autoButton_clicked();
-            ui->autoButton->setEnabled(false);
-        }
+        ui->autoButton->setEnabled(false);
     }
     update();
 }
