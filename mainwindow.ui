@@ -60,6 +60,11 @@
             <widget class="QComboBox" name="ciphiersComboBox">
              <item>
               <property name="text">
+               <string>Шифрование маг. кв.</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>Шифр Цезаря</string>
               </property>
              </item>
@@ -75,22 +80,17 @@
              </item>
              <item>
               <property name="text">
-               <string>Шифр Плейфера</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
                <string>Шифр Трисемуса</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифр Виженера</string>
+               <string>Шифр Плейфера</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифрование маг. кв.</string>
+               <string>Шифр Виженера</string>
               </property>
              </item>
              <item>

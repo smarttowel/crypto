@@ -35,54 +35,60 @@ void MainWindow::on_ciphiersComboBox_currentIndexChanged(int index)
         delete m_visualization;
     switch(index)
     {
-        case 0:
-        {
-            m_cipher = new CaesarCipher(0, m_text);
-            m_visualization = new CaesarCipherView(0, int(ui->trainingModeCheckBox->checkState()));
-            break;
-        }
-        case 1:
-        {
-            m_cipher = new CaesarAfCipher(0, m_text);
-            m_visualization = new CaesarCipherView(0, int(ui->trainingModeCheckBox->checkState()));
-            break;
-        }
-        case 2:
-        {
-            m_cipher = new CaesarKWCipher(0, m_text);
-            m_visualization = new CaesarKWCipherView(0, int(ui->trainingModeCheckBox->checkState()));
-            break;
-        }
-        case 3:
-        {
-            m_cipher = new PlayfairCipher(0, m_text);
-            m_visualization = new PlayfairCipherView(0, int(ui->trainingModeCheckBox->checkState()));
-            break;
-        }
-        case 4:
-        {
-            m_cipher = new TrithemiusCipher(0, m_text);
-            m_visualization = new TrithemiusCipherView(0, int(ui->trainingModeCheckBox->checkState()));
-            break;
-        }
-        case 5:
-        {
-            m_cipher = new VigenereCipher(0, m_text);
-            m_visualization = new VigenereCipherView(0, int(ui->trainingModeCheckBox->checkState()));
-            break;
-        }
-        case 6:
-        {
-            m_cipher = new MagicSquareCipher(0, m_text);
-            m_visualization = new MagicSquareCipherView(0, int(ui->trainingModeCheckBox->checkState()));
-            break;
-        }
-        case 7:
-        {
-            m_cipher = new WheatstoneCipher(0, m_text);
-            m_visualization = new WheatstoneCipherView(0, int(ui->trainingModeCheckBox->checkState()));
-            break;
-        }
+    case 0:
+    {
+
+        m_cipher = new MagicSquareCipher(0, m_text);
+        m_visualization = new MagicSquareCipherView(0, int(ui->trainingModeCheckBox->checkState()));
+        break;
+    }
+    case 1:
+    {
+        m_cipher = new CaesarCipher(0, m_text);
+        m_visualization = new CaesarCipherView(0, int(ui->trainingModeCheckBox->checkState()));
+        break;
+
+    }
+    case 2:
+    {
+        m_cipher = new CaesarAfCipher(0, m_text);
+        m_visualization = new CaesarCipherView(0, int(ui->trainingModeCheckBox->checkState()));
+        break;
+
+    }
+    case 3:
+    {
+        m_cipher = new CaesarKWCipher(0, m_text);
+        m_visualization = new CaesarKWCipherView(0, int(ui->trainingModeCheckBox->checkState()));
+        break;
+
+    }
+    case 4:
+    {
+        m_cipher = new TrithemiusCipher(0, m_text);
+        m_visualization = new TrithemiusCipherView(0, int(ui->trainingModeCheckBox->checkState()));
+        break;
+    }
+    case 5:
+    {
+        m_cipher = new PlayfairCipher(0, m_text);
+        m_visualization = new PlayfairCipherView(0, int(ui->trainingModeCheckBox->checkState()));
+        break;
+
+    }
+    case 6:
+    {
+        m_cipher = new VigenereCipher(0, m_text);
+        m_visualization = new VigenereCipherView(0, int(ui->trainingModeCheckBox->checkState()));
+        break;
+
+    }
+    case 7:
+    {
+        m_cipher = new WheatstoneCipher(0, m_text);
+        m_visualization = new WheatstoneCipherView(0, int(ui->trainingModeCheckBox->checkState()));
+        break;
+    }
     }
     connect(m_cipher, SIGNAL(encryptedText(QString)), ui->codeOutTextEdit, SLOT(setText(QString)));
     connect(ui->encryptPushButton, SIGNAL(clicked()), m_cipher, SLOT(encryptText()));
