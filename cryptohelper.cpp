@@ -1,5 +1,4 @@
 #include "cryptohelper.h"
-#include <QDebug>
 
 CryptoHelper::CryptoHelper(QObject *parent) :
     QObject(parent)

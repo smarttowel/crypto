@@ -56,7 +56,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Размер квадрата</string>
+          <string>Size</string>
          </property>
         </widget>
        </item>
@@ -86,7 +86,7 @@
        <item>
         <widget class="QPushButton" name="clearSquarePushButton">
          <property name="text">
-          <string>Очистить квадрат</string>
+          <string>Clear square</string>
          </property>
         </widget>
        </item>

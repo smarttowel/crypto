@@ -53,3 +53,7 @@ FORMS    += mainwindow.ui \
     settingsdialog.ui \
     aboutdialog.ui \
     abstractcipherview.ui
+
+RESOURCES +=
+
+TRANSLATIONS += translations/ru.ts

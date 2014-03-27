@@ -51,7 +51,7 @@
          </size>
         </property>
         <property name="title">
-         <string>Шифры</string>
+         <string>Ciphers</string>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
@@ -60,42 +60,42 @@
             <widget class="QComboBox" name="ciphiersComboBox">
              <item>
               <property name="text">
-               <string>Шифрование маг. кв.</string>
+               <string>Magic square cipher</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифр Цезаря</string>
+               <string>Caesar cipher</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифр Цезаря(афин.)</string>
+               <string>Caesar cipher (affine)</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифр Цезаря(кл. сл.)</string>
+               <string>Caesar cipher (keyword)</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифр Трисемуса</string>
+               <string>Trithemius cipher</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифр Плейфера</string>
+               <string>Playfair cipher</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифр Виженера</string>
+               <string>Vigenere cipher</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Шифр Уитстона</string>
+               <string>Wheatstone cipher</string>
               </property>
              </item>
             </widget>
@@ -116,7 +116,7 @@
            <item>
             <widget class="QPushButton" name="encryptPushButton">
              <property name="text">
-              <string>Зашифровать</string>
+              <string>Encrypt</string>
              </property>
             </widget>
            </item>
@@ -128,7 +128,7 @@
       <item>
        <widget class="QGroupBox" name="groupBox_2">
         <property name="title">
-         <string>Управление</string>
+         <string>Control</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
@@ -136,7 +136,7 @@
            <item>
             <widget class="QCheckBox" name="trainingModeCheckBox">
              <property name="text">
-              <string>Режим обучения</string>
+              <string>Learning mode</string>
              </property>
             </widget>
            </item>
@@ -168,12 +168,12 @@
      <x>0</x>
      <y>0</y>
      <width>757</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="generalMenu">
     <property name="title">
-     <string>Общие</string>
+     <string>General</string>
     </property>
     <addaction name="action_saveToFile"/>
     <addaction name="separator"/>
@@ -181,13 +181,13 @@
    </widget>
    <widget class="QMenu" name="settingsMenu">
     <property name="title">
-     <string>Настройки</string>
+     <string>Settings</string>
     </property>
     <addaction name="action_settings"/>
    </widget>
    <widget class="QMenu" name="aboutMenu">
     <property name="title">
-     <string>О программе</string>
+     <string>About</string>
     </property>
     <addaction name="action_aboutQt"/>
     <addaction name="action_aboutProgram"/>
@@ -207,32 +207,35 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_saveToFile">
    <property name="text">
-    <string>Сохранить результат в файл...</string>
+    <string>Save to file...</string>
    </property>
   </action>
   <action name="action">
    <property name="text">
-    <string>Выход</string>
+    <string>Exit</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit</string>
    </property>
   </action>
   <action name="action_Exit">
    <property name="text">
-    <string>Выход</string>
+    <string>Exit</string>
    </property>
   </action>
   <action name="action_aboutQt">
    <property name="text">
-    <string>О Qt...</string>
+    <string>About Qt...</string>
    </property>
   </action>
   <action name="action_aboutProgram">
    <property name="text">
-    <string>О программе...</string>
+    <string>About program...</string>
    </property>
   </action>
   <action name="action_settings">
    <property name="text">
-    <string>Настройки...</string>
+    <string>Settings...</string>
    </property>
   </action>
  </widget>

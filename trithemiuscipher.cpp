@@ -1,6 +1,5 @@
 #include "trithemiuscipher.h"
 #include "ui_trithemiuscipher.h"
-#include <QDebug>
 
 void TrithemiusCipherView::paintEvent(QPaintEvent *)
 {
@@ -49,7 +48,7 @@ TrithemiusCipherView::TrithemiusCipherView(QWidget *parent, int a) :
     m_token = 1;
     setFixedSize(100 + m_cellRect.x() + CELL_SIZE * CryptoHelper::tableSize(CryptoHelper::alphabet.length()).second,
                  200 + m_cellRect.y() * 2 + CELL_SIZE * CryptoHelper::tableSize(CryptoHelper::alphabet.length()).first);
-    setWindowTitle(QString::fromLocal8Bit("Визуализация шифрующей таблицы Трисемуса"));
+    setWindowTitle(tr("Visualization Trithemius cipher"));
 }
 
 TrithemiusCipherView::~TrithemiusCipherView()
@@ -80,7 +79,7 @@ void TrithemiusCipher::encryptText()
         QString alphabet = CryptoHelper::alphabet;
         int row = CryptoHelper::tableSize(alphabet.length()).first;
         int col = CryptoHelper::tableSize(alphabet.length()).second;
-        ui->label_2->setText(QString::fromLocal8Bit("Размер таблицы: %1x%2").arg(row).arg(col));
+        ui->label_2->setText(tr("Table size: %1x%2").arg(row).arg(col));
         for(int i = 0; i < ui->lineEdit->text().length(); i++)
         {
             alphabet.remove(ui->lineEdit->text()[i]);
@@ -96,5 +95,5 @@ void TrithemiusCipher::encryptText()
         emit encryptedText(outText);
     }
     else
-        emit encryptedText(QString::fromLocal8Bit("Этот ключ не подходит!"));
+        emit encryptedText(tr("Bad key!"));
 }

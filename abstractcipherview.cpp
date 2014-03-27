@@ -121,11 +121,11 @@ void AbstractCipherView::on_autoButton_clicked()
     if(m_timer.isActive())
     {
         m_timer.stop();
-        ui->autoButton->setText(QString::fromLocal8Bit("Авто"));
+        ui->autoButton->setText(tr("Auto"));
     }
     else
     {
         m_timer.start(CryptoHelper::interval);
-        ui->autoButton->setText(QString::fromLocal8Bit("Стоп"));
+        ui->autoButton->setText(tr("Stop"));
     }
 }

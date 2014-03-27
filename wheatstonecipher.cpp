@@ -1,6 +1,5 @@
 #include "wheatstonecipher.h"
 #include "ui_wheatstonecipher.h"
-#include <QDebug>
 
 void WheatstoneCipherView::paintEvent(QPaintEvent *)
 {
@@ -75,7 +74,7 @@ WheatstoneCipherView::WheatstoneCipherView(QWidget *parent, int a) :
     m_token = 2;
     setFixedSize(100 + m_cellRect.x() + CELL_SIZE * CryptoHelper::tableSize(CryptoHelper::alphabet.length()).second * 2,
                  200 + m_cellRect.y() * 2 + CELL_SIZE * CryptoHelper::tableSize(CryptoHelper::alphabet.length()).first);
-    setWindowTitle(QString::fromLocal8Bit("Визуализация шифра Уитстона"));
+    setWindowTitle(tr("Visualization Wheatstone cipher"));
 }
 
 WheatstoneCipherView::~WheatstoneCipherView()
@@ -158,7 +157,7 @@ void WheatstoneCipher::encryptText()
         QString inText = CryptoHelper::preW(ui->textEdit->toPlainText());
         if(inText.length() % 2 != 0)
         {
-            emit encryptedText(QString::fromLocal8Bit("Количество букв в тексте должно быть четным!"));
+            emit encryptedText(tr("Number of letters in the text must be even!"));
             return;
         }
         QString outText;
@@ -192,5 +191,5 @@ void WheatstoneCipher::encryptText()
         emit encryptedText(outText);
     }
     else
-        emit encryptedText(QString::fromLocal8Bit("Неверная таблица!"));
+        emit encryptedText(tr("Wrong table!"));
 }

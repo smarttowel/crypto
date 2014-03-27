@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <cryptohelper.h>
 #include <QPainter>
-#include <QDebug>
 #include "abstractcipherview.h"
 
 class VigenereCipherView : public AbstractCipherView

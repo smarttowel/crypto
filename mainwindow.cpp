@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTextEdit>
-#include <QDebug>
+#include <QTextStream>
 #include "cryptohelper.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -108,7 +108,7 @@ void MainWindow::textBuffer(QString text)
 
 void MainWindow::saveToFile()
 {
-    QString filename = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("Сохранить в..."), "",
+    QString filename = QFileDialog::getSaveFileName(this, tr("Save to..."), "",
                                                     QString("Text files (*.txt)"));
     QFile file;
     file.setFileName(filename);

@@ -1,6 +1,5 @@
 #include "magicsquarecipher.h"
 #include "ui_magicsquarecipher.h"
-#include <QDebug>
 
 void MagicSquareCipherView::paintEvent(QPaintEvent *)
 {
@@ -57,7 +56,7 @@ MagicSquareCipherView::MagicSquareCipherView(QWidget *parent, int a) :
     m_currentChar = 0;
     m_token = 1;
     CELL_SIZE = 40;
-    setWindowTitle(QString::fromLocal8Bit("Визуализация шифрования магическим квадратом"));
+    setWindowTitle(tr("Visualization magic square cipher"));
 }
 
 MagicSquareCipherView::~MagicSquareCipherView()
@@ -224,5 +223,5 @@ void MagicSquareCipher::encryptText()
         emit encryptedText(outText);
     }
     else
-        emit encryptedText(QString::fromLocal8Bit("Данный квадрат не магический!"));
+        emit encryptedText(tr("This is not a magic square!"));
 }

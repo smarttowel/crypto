@@ -1,6 +1,5 @@
 #include "caesarcipher.h"
 #include "ui_caesarcipher.h"
-#include <QDebug>
 
 void CaesarCipherView::paintEvent(QPaintEvent *)
 {
@@ -62,7 +61,7 @@ CaesarCipherView::CaesarCipherView(QWidget *parent, int a) :
     m_token = 1;
     setFixedSize(m_cellRect.x() * 6 + m_cellRect.width() * CryptoHelper::alphabet.length(),
                  200 + m_cellRect.y() * 2 + m_cellRect.height());
-    setWindowTitle(QString::fromLocal8Bit("Визуализация шифра Цезаря"));
+    setWindowTitle(tr("Visualization Caesar cipher"));
 }
 
 CaesarCipherView::~CaesarCipherView()

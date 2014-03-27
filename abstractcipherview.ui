@@ -62,14 +62,14 @@
      <item>
       <widget class="QPushButton" name="backButton">
        <property name="text">
-        <string>Назад</string>
+        <string>Previous</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="nextButton">
        <property name="text">
-        <string>Далее</string>
+        <string>Next</string>
        </property>
       </widget>
      </item>
@@ -89,7 +89,7 @@
      <item>
       <widget class="QPushButton" name="autoButton">
        <property name="text">
-        <string>Авто</string>
+        <string>Auto</string>
        </property>
       </widget>
      </item>

@@ -42,5 +42,5 @@ void CaesarAfCipher::encryptText()
         emit encryptedText(text);
     }
     else
-        emit encryptedText(QString::fromLocal8Bit("a и m не взаимно простые!"));
+        emit encryptedText(tr("'a' and 'm' don't coprime!"));
 }

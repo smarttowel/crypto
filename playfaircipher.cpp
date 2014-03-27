@@ -1,6 +1,5 @@
 #include "playfaircipher.h"
 #include "ui_playfaircipher.h"
-#include <QDebug>
 
 void PlayfairCipherView::paintEvent(QPaintEvent *)
 {
@@ -80,7 +79,7 @@ PlayfairCipherView::PlayfairCipherView(QWidget *parent, int a) :
     m_token = 2;
     setFixedSize(100 + m_cellRect.x() + CELL_SIZE * CryptoHelper::tableSize(CryptoHelper::alphabet.length()).second,
                  200 + m_cellRect.y() * 2 + CELL_SIZE * CryptoHelper::tableSize(CryptoHelper::alphabet.length()).first);
-    setWindowTitle(QString::fromLocal8Bit("Визуализация шифра Плейфера"));
+    setWindowTitle(tr("Visualization Playfair cipher"));
 }
 
 PlayfairCipherView::~PlayfairCipherView()
@@ -107,7 +106,7 @@ void PlayfairCipher::encryptText()
     {
         if(ui->textEdit->toPlainText().length() % 2 != 0)
         {
-            emit encryptedText(QString::fromLocal8Bit("Количество букв в тексте должно быть четным!"));
+            emit encryptedText(tr("Number of letters in the text should be even!"));
             return;
         }
         QString alphabet = CryptoHelper::alphabet;
@@ -118,7 +117,7 @@ void PlayfairCipher::encryptText()
         int second;
         int row = CryptoHelper::tableSize(alphabet.length()).first;
         int col = CryptoHelper::tableSize(alphabet.length()).second;
-        ui->label_2->setText(QString::fromLocal8Bit("Размер таблицы: %1x%2").arg(row).arg(col));
+        ui->label_2->setText(tr("Table size: %1x%2").arg(row).arg(col));
         for(int i = 0; i < ui->keyLineEdit->text().length(); i++)
         {
             alphabet.remove(ui->keyLineEdit->text()[i]);
@@ -151,5 +150,5 @@ void PlayfairCipher::encryptText()
         emit encryptedText(outText);
     }
     else
-        emit encryptedText(QString::fromLocal8Bit("Данный ключ не подходит"));
+        emit encryptedText(tr("Bad key"));
 }

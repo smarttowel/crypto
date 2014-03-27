@@ -12,15 +12,15 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     connect(ui->defaultSettingsPushButton, SIGNAL(clicked()), this, SLOT(returnDefaultSettings()));
     QStringList list;
     list << "black" << "white" << "darkGray" << "gray" << "lightGray" << "red"  << "green"  << "blue" << "cyan" << "magenta" << "yellow" <<
-         "darkRed" << "darkGreen" << "darkBlue" << "darkCyan"  << "darkMagenta" << "darkYellow";
+            "darkRed" << "darkGreen" << "darkBlue" << "darkCyan"  << "darkMagenta" << "darkYellow";
     ui->tableColorComboBox->addItems(list);
     ui->inCharsColorComboBox->addItems(list);
     ui->outCharsColorComboBox->addItems(list);
     ui->ArrowColorComboBox->addItems(list);
     //
     QSettings settings("settings", QSettings::IniFormat);
-    CryptoHelper::alphabet = settings.value("alphabet", QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя")).toString();
-    CryptoHelper::extAlphabet = settings.value("extAlphabet", QString::fromLocal8Bit(" :,.")).toString();
+    CryptoHelper::alphabet = settings.value("alphabet", tr("abcdefghijklmnopqrstuvwxyz")).toString();
+    CryptoHelper::extAlphabet = settings.value("extAlphabet", (" :,.")).toString();
     CryptoHelper::tokenLength = settings.value("tokenLength", 4).toInt();
     CryptoHelper::tableColor = Qt::GlobalColor(settings.value("tableColor", 2).toInt());
     CryptoHelper::inCharsColor = Qt::GlobalColor(settings.value("inCharsColor", 8).toInt());
@@ -83,13 +83,14 @@ void SettingsDialog::on_applyPushButton_clicked()
         this->hide();
     }
     else
-        ui->msgLabel->setText(QString::fromLocal8Bit("<font color = \"red\">Символы в алфавите не должны повторяться!</font>"));
+        ui->msgLabel->setText(QString("<font color = \"red\">%1</font>")
+                              .arg(tr("Characters in the alphabet should not be repeated!")));
 }
 
 void SettingsDialog::returnDefaultSettings()
 {
-    ui->alphabetLineEdit->setText(QString::fromLocal8Bit("абвгдежзийклмнопрстуфхцчшщъыьэюя"));
-    ui->extAlphabetLineEdit->setText(QString::fromLocal8Bit(" :,."));
+    ui->alphabetLineEdit->setText(tr("abcdefghijklmnopqrstuvwxyz"));
+    ui->extAlphabetLineEdit->setText(" :,.");
     ui->tokenLengthSpinBox->setValue(4);
     ui->tableColorComboBox->setCurrentIndex(0);
     ui->inCharsColorComboBox->setCurrentIndex(6);

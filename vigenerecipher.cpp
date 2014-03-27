@@ -79,7 +79,7 @@ VigenereCipherView::VigenereCipherView(QWidget *parent, int a) :
     CELL_SIZE = 18;
     setFixedSize(100 + m_cellRect.x() + CELL_SIZE * CryptoHelper::alphabet.length(),
                  130 + m_cellRect.y() * 2 + CELL_SIZE * CryptoHelper::alphabet.length());
-    setWindowTitle(QString::fromLocal8Bit("Визуализация шифра Виженера"));
+    setWindowTitle(tr("Visualization Vigenere cipher"));
 }
 
 VigenereCipherView::~VigenereCipherView()
@@ -117,5 +117,5 @@ void VigenereCipher::encryptText()
         emit encryptedText(outText);
     }
     else
-        emit encryptedText(QString::fromLocal8Bit("Ключ не может быть нулевой длины"));
+        emit encryptedText(tr("Key cannot be empty!"));
 }

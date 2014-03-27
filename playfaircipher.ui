@@ -24,7 +24,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Ключевое слово</string>
+          <string>Keyword</string>
          </property>
         </widget>
        </item>
@@ -34,7 +34,7 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Размер таблицы: mxn</string>
+          <string>Table size: mxn</string>
          </property>
         </widget>
        </item>

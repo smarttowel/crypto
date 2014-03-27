@@ -1,6 +1,5 @@
 #include "caesarkwcipher.h"
 #include "ui_caesarkwcipher.h"
-#include <QDebug>
 
 void CaesarKWCipherView::paintEvent(QPaintEvent *)
 {
@@ -72,7 +71,7 @@ CaesarKWCipherView::CaesarKWCipherView(QWidget *parent, int a) :
     m_token = 1;
     setFixedSize(m_cellRect.x() * 6 + m_cellRect.width() * CryptoHelper::alphabet.length(),
                  200 + m_cellRect.y() * 2 + m_cellRect.height());
-    setWindowTitle(QString::fromLocal8Bit("Визуализация шифра Цезаря"));
+    setWindowTitle(tr("Visualization Caesar cipher"));
 }
 
 CaesarKWCipherView::~CaesarKWCipherView()
@@ -116,5 +115,5 @@ void CaesarKWCipher::encryptText()
         emit encryptedText(outText);
     }
     else
-        emit encryptedText(QString::fromLocal8Bit("В ключевом слове не должны повторяться буквы!"));
+        emit encryptedText(tr("In keyword must not be repeated letters!"));
 }

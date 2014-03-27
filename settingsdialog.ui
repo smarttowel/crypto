@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Настройки</string>
+   <string>Settings</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -21,7 +21,7 @@
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>Шифр</string>
+       <string>Cipher</string>
       </attribute>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
@@ -29,7 +29,7 @@
          <item>
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>Алфавит:</string>
+            <string>Alphabet:</string>
            </property>
           </widget>
          </item>
@@ -43,7 +43,7 @@
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>Дополнительные символы для шифра Уитстона:</string>
+            <string>Additional chars for Wheatstone cipher:</string>
            </property>
           </widget>
          </item>
@@ -57,7 +57,7 @@
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Длина блока шифра текста:</string>
+            <string>Lenght of token output text:</string>
            </property>
           </widget>
          </item>
@@ -97,7 +97,7 @@
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>Визуализация</string>
+       <string>Visualization</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
@@ -107,7 +107,7 @@
            <item>
             <widget class="QLabel" name="label_4">
              <property name="text">
-              <string>Цвет таблицы и букв</string>
+              <string>Color of table and chars</string>
              </property>
             </widget>
            </item>
@@ -121,7 +121,7 @@
            <item>
             <widget class="QLabel" name="label_5">
              <property name="text">
-              <string>Цвет исходных букв</string>
+              <string>Color of source chars</string>
              </property>
             </widget>
            </item>
@@ -135,7 +135,7 @@
            <item>
             <widget class="QLabel" name="label_6">
              <property name="text">
-              <string>Цвет букв шифра</string>
+              <string>Color of output chars</string>
              </property>
             </widget>
            </item>
@@ -149,7 +149,7 @@
            <item>
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>Цвет стрелки</string>
+              <string>Color arrow</string>
              </property>
             </widget>
            </item>
@@ -163,7 +163,7 @@
            <item>
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>Интервал</string>
+              <string>Delay</string>
              </property>
             </widget>
            </item>
@@ -212,7 +212,7 @@
      <item>
       <widget class="QPushButton" name="defaultSettingsPushButton">
        <property name="text">
-        <string>По умолчанию</string>
+        <string>Default</string>
        </property>
       </widget>
      </item>
@@ -239,7 +239,7 @@
      <item>
       <widget class="QPushButton" name="cancelPushButton">
        <property name="text">
-        <string>Отмена</string>
+        <string>Cancel</string>
        </property>
       </widget>
      </item>
