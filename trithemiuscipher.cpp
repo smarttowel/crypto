@@ -82,9 +82,9 @@ void TrithemiusCipher::encryptText()
         ui->label_2->setText(tr("Table size: %1x%2").arg(row).arg(col));
         for(int i = 0; i < ui->lineEdit->text().length(); i++)
         {
-            alphabet.remove(ui->lineEdit->text()[i]);
+            alphabet.remove(ui->lineEdit->text().toLower()[i]);
         }
-        table = ui->lineEdit->text();
+        table = ui->lineEdit->text().toLower();
         table += alphabet;
         for(int i = 0; i < inText.length(); i++)
         {

@@ -105,7 +105,7 @@ void VigenereCipher::encryptText()
     if(!ui->lineEdit->text().isEmpty())
     {
         QString inText = CryptoHelper::pre(ui->textEdit->toPlainText());
-        QString key = ui->lineEdit->text();
+        QString key = ui->lineEdit->text().toLower();
         QString outText;
         QString alphabet = CryptoHelper::alphabet;
         for(int i = 0; i < inText.length(); i++)

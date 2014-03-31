@@ -120,9 +120,9 @@ void PlayfairCipher::encryptText()
         ui->label_2->setText(tr("Table size: %1x%2").arg(row).arg(col));
         for(int i = 0; i < ui->keyLineEdit->text().length(); i++)
         {
-            alphabet.remove(ui->keyLineEdit->text()[i]);
+            alphabet.remove(ui->keyLineEdit->text().toLower()[i]);
         }
-        table = ui->keyLineEdit->text();
+        table = ui->keyLineEdit->text().toLower();
         table += alphabet;
         for(int i = 0; i < inText.length() / 2; i++)
         {

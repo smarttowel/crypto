@@ -103,9 +103,9 @@ void CaesarKWCipher::encryptText()
         QString outText;
         for(int i = 0; i < ui->secondKeyLineEdit->text().length(); i++)
         {
-            alphabet.remove(ui->secondKeyLineEdit->text()[i]);
+            alphabet.remove(ui->secondKeyLineEdit->text().toLower()[i]);
         }
-        newAlphabet = ui->secondKeyLineEdit->text();
+        newAlphabet = ui->secondKeyLineEdit->text().toLower();
         newAlphabet += alphabet;
         newAlphabet = CryptoHelper::rightRotate(newAlphabet, ui->firstKeySpinBox->value() - 1);
         for(int i = 0; i < inText.length(); i++)
